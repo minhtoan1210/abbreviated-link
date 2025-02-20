@@ -1,0 +1,104 @@
+header {
+    background: rgb(66, 53, 239);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .header-logo {
+    display: flex;
+    align-items: center;
+    padding: 1.6rem 0;
+}
+
+.header .header-logo button {
+    width: 3rem;
+    height: 3rem;
+}
+
+.header .header-logo button svg {
+    width: 3rem;
+    height: 3rem;
+    color: rgb(255, 255, 255);
+}
+
+.text-dropdown-menu {
+    font-size: 1.8rem;
+    display: block;
+    color: #212529;
+    padding: 1rem 3.5rem;
+}
+
+.text-dropdown-menu:hover {
+    background: #E9ECEF;
+    color: #4235EF;
+}
+
+.text-dropdown-menu:nth-last-child(1) {
+    font-size: 1.8rem;
+    display: block;
+    color: #212529;
+    padding: 1.5rem 3.5rem 1rem 3.5rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.header .header-btn {
+    display: flex;
+}
+
+.header .header-btn .btn-pricing:hover {
+    text-decoration: underline;
+}
+
+.header .header-btn .btn-pricing {
+    color: #ffffff;
+    margin-right: 1.4rem;
+}
+
+.header .header-btn .btn-login {
+    border: 1px solid #ffffff;
+    padding: 0rem 1.2rem;
+    border-radius: 0.8rem;
+    color: #ffffff;
+    margin-right: 1.4rem;
+}
+
+.header .header-btn .btn-login:hover {
+    background: #ffffff;
+    color: #002482
+}
+
+.header .header-btn .btn-signup {
+    background: rgb(59, 214, 113);
+    color: #ffffff;
+    padding: 0rem 1.2rem;
+    border-radius: 0.8rem;
+    margin-right: 1.4rem;
+}
+
+.header .header-btn .btn-signup:hover {
+    background: linear-gradient(to right, #3bd671 0%, #23bf59 120%);
+    ;
+}
+
+.languages {
+    border: 1px solid #ffffff;
+    padding: 1.3rem 1.2rem;
+    border-radius: 0.8rem;
+    font-size: 1.8rem;
+    color: #ffffff;
+}
+
+.languages:hover {
+    background: #ffffff;
+    color: #0e1527;
+}
+
+.languages svg {
+    width: 1.6rem;
+    height: 1.6rem;
+}
+

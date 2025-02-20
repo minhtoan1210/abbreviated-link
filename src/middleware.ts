@@ -1,21 +1,24 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
-// const privatePaths = ['/']
-const unAuthPaths = ['/login']
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
-  
-//   const isAuth = Boolean(request.cookies.get('accessToken')?.value)
-//   if (privatePaths.some((path) => pathname.startsWith(path)) && !isAuth) {
-//     return NextResponse.redirect(new URL('/login', request.url))
-//   }
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+const privatePaths = ["/manage"];
+const unAuthPaths = ["/login"];
 
-  if (unAuthPaths.some((path) => pathname.startsWith(path))) {
-    return NextResponse.redirect(new URL('/', request.url))
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  const isAuth = request.cookies.get("accessToken")?.value;
+
+  if (privatePaths.some((path) => pathname.startsWith(path)) && !isAuth) {
+    return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  return NextResponse.next()
+  if (unAuthPaths.some((path) => pathname.startsWith(path)) && isAuth) {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+
+  return NextResponse.next();
+  
 }
 export const config = {
-  matcher: ['/:path*', '/login']
-}
+  matcher: ["/login", "/manage/:path*",],
+};

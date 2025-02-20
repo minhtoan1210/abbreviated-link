@@ -1,0 +1,115 @@
+.login {
+    margin-top: 2rem;
+}
+
+.form-login {
+    border: 0rem;
+}
+
+.login .form-login {
+    width: 38rem;
+}
+
+.login .title {
+    font-size: 2.8rem;
+    color: #0E1527;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.login .form-login {
+    border-radius: 0.8rem;
+    box-shadow: 0 1px 12px #f2f3f9;
+}
+
+.text-email {
+    font-size: 1.4rem;
+}
+
+#email::placeholder, #password::placeholder {
+    color: rgb(131, 136, 150);
+}
+
+
+input::placeholder {
+    font-size: 1.6rem;
+}
+
+#email, #password {
+    height: 5rem;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    border: 1px solid #838896;
+    border-radius: 0.3rem;
+    margin-bottom: 2rem;
+}
+
+.forgot-password {
+    text-align: right;
+    font-size: 1.4rem;
+}
+
+.btn-login-form {
+    background: #1b5aff;
+    height: 5rem;
+    border-radius: 0.8rem;
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
+.btn-login-form:hover {
+    background: #3bd671;
+}
+
+.login-other .title {
+    font-size: 1.8rem;
+    color: #0E1527;
+    margin-top: 2.4rem;
+    font-weight: 100;
+}
+
+.btn-other {
+    text-align: center;
+}
+
+.login-other .btn-other .tbn-fb,
+.login-other .btn-other .tbn-google,
+.login-other .btn-other .tbn-twitter {
+    font-size: 1.6rem;
+    margin: 2.4rem 0rem 1.5rem;
+    padding: 1.5rem 2.5rem;
+    border: 1px solid #838896;
+    border-radius: 0.8rem;
+    margin-right: 2rem;
+}
+
+.login-other .btn-other .tbn-fb:hover,
+.login-other .btn-other .tbn-google:hover,
+.login-other .btn-other .tbn-twitter:hover
+ {
+    background: #1b5aff;
+    color: white;
+}
+
+.login-other .title-sub {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.login-other .btn-create {
+    text-align: center;
+    border: 1px solid #1b5aff;
+    border-radius: 5rem;
+    margin-top: 1rem;
+    width: 28rem;
+    height: 5rem;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    color: #1b5aff;
+    margin-top: 1rem;
+}
