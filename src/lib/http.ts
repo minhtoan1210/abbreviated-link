@@ -1,37 +1,14 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosRequestConfig, AxiosError } from "axios";
 import envConfig from "@/config";
 import { normalizePath } from "@/lib/utils";
 
-type CustomOptions = AxiosRequestConfig & {
-  baseUrl?: string | undefined;
-};
-
 const ENTITY_ERROR_STATUS = 422;
-
-type EntityErrorPayload = {
-  message: string;
-  errors: {
-    field: string;
-    message: string;
-  }[];
-};
+const AUTHENTICATION_ERROR_STATUS = 401;
 
 export class HttpError extends Error {
   status: number;
-  payload: {
-    message: string;
-    [key: string]: any;
-  };
-
-  constructor({
-    status,
-    payload,
-    message = "HTTP error",
-  }: {
-    status: number;
-    payload: any;
-    message?: string;
-  }) {
+  payload: any;
+  constructor(status: number, payload: any, message = "Lỗi HTTP") {
     super(message);
     this.status = status;
     this.payload = payload;
@@ -39,21 +16,12 @@ export class HttpError extends Error {
 }
 
 export class EntityError extends HttpError {
-  status: typeof ENTITY_ERROR_STATUS;
-  payload: EntityErrorPayload;
-
-  constructor({
-    status,
-    payload,
-  }: {
-    status: typeof ENTITY_ERROR_STATUS;
-    payload: EntityErrorPayload;
-  }) {
-    super({ status, payload, message: "Lỗi thực thể" });
-    this.status = status;
-    this.payload = payload;
+  constructor(payload: any) {
+    super(ENTITY_ERROR_STATUS, payload, "Lỗi thực thể");
   }
 }
+
+const isClient = typeof window !== "undefined";
 
 const axiosInstance = axios.create({
   baseURL: envConfig.NEXT_PUBLIC_API_ENDPOINT,
@@ -66,7 +34,7 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use((config) => {
-  if (typeof window !== "undefined") {
+  if (isClient) {
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
@@ -76,65 +44,46 @@ axiosInstance.interceptors.request.use((config) => {
 });
 
 axiosInstance.interceptors.response.use(
-  (response: AxiosResponse) => response,
-  (error) => {
+  (response) => response,
+  (error: AxiosError) => {
     if (error.response) {
       const { status, data } = error.response;
       if (status === ENTITY_ERROR_STATUS) {
-        throw new EntityError({
-          status: 422,
-          payload: data,
-        });
+        return Promise.reject(new EntityError(data));
+      } else if (status === AUTHENTICATION_ERROR_STATUS) {
+        console.log("Lỗi 401");
       }
-      throw new HttpError({
-        status,
-        payload: data,
-      });
+      return Promise.reject(new HttpError(status, data));
     }
-    throw error;
+    return Promise.reject(error);
   }
 );
 
-const request = async <Response>(
-  method: "GET" | "POST" | "PUT" | "DELETE",
-  url: string,
-  options?: CustomOptions
-) => {
-  const fullUrl = `/${normalizePath(url)}`;
-  const config: AxiosRequestConfig = {
-    ...options,
-    method,
-    url: fullUrl,
-  };
-
-  if (options?.baseUrl) {
-    config.baseURL = options.baseUrl;
-  }
-
-  const response = await axiosInstance.request<Response>(config);
-  return {
-    status: response.status,
-    payload: response.data,
-  };
-};
-
 const http = {
-  get<Response>(url: string, options?: Omit<CustomOptions, "data">) {
-    return request<Response>("GET", url, options);
+  get<Response>(url: string, config?: AxiosRequestConfig & { baseUrl?: string }) {
+    return axiosInstance.get<Response>(normalizePath(url), {
+      ...config,
+      baseURL: config?.baseUrl ?? envConfig.NEXT_PUBLIC_API_ENDPOINT,
+    });
   },
-
-  post<Response>(url: string, data: any, options?: Omit<CustomOptions, "data">) {
-    return request<Response>("POST", url, { ...options, data });
+  post<Response>(url: string, body: any, config?: AxiosRequestConfig & { baseUrl?: string }) {
+    return axiosInstance.post<Response>(normalizePath(url), body, {
+      ...config,
+      baseURL: config?.baseUrl ?? envConfig.NEXT_PUBLIC_API_ENDPOINT,
+    });
   },
-
-  put<Response>(url: string, data: any, options?: Omit<CustomOptions, "data">) {
-    return request<Response>("PUT", url, { ...options, data });
+  put<Response>(url: string, body: any, config?: AxiosRequestConfig & { baseUrl?: string }) {
+    return axiosInstance.put<Response>(normalizePath(url), body, {
+      ...config,
+      baseURL: config?.baseUrl ?? envConfig.NEXT_PUBLIC_API_ENDPOINT,
+    });
   },
-
-  delete<Response>(url: string, options?: Omit<CustomOptions, "data">) {
-    return request<Response>("DELETE", url, options);
+  delete<Response>(url: string, config?: AxiosRequestConfig & { baseUrl?: string }) {
+    return axiosInstance.delete<Response>(normalizePath(url), {
+      ...config,
+      baseURL: config?.baseUrl ?? envConfig.NEXT_PUBLIC_API_ENDPOINT,
+    });
   },
-  
 };
 
 export default http;

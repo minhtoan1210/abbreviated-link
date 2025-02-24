@@ -1,6 +1,5 @@
-"use client";
 import { Menu, ChevronDown  } from "lucide-react";
-import "./style.css";
+import "./header.css";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -39,7 +38,7 @@ export default function Header() {
               <Link href="/" className="btn-pricing f18-ls6">
                 Pricing
               </Link>
-              <Link href="/" className="btn-login f18-ls6">
+              <Link href="/login" className="btn-login f18-ls6">
                 Log in
               </Link>
               <Link href="/" className="btn-signup f18-ls6">

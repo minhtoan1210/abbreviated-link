@@ -5,14 +5,15 @@
 @tailwind utilities;
 
 @layer base {
-body {
-  max-width: 1920px;
-  overflow-x: hidden;
-}
+  body {
+    max-width: 1920px;
+    overflow-x: hidden;
+  }
 
   html {
-    font-size: 62.5% ;
-    font-family: 'Ubuntu';
+    font-size: 62.5%;
+    /* font-family: 'Ubuntu'; */
+    font-family: Ubuntu, sans-serif;
   }
 
   @media (max-width: 1250px) {
@@ -23,12 +24,16 @@ body {
 
 }
 
-  .container {
-    width: 90%;
-    margin: auto;
+.container {
+  width: 90%;
+  margin: auto;
 }
 
 .f18-ls6 {
   font-size: 1.8rem;
   letter-spacing: 0.06rem
+}
+
+.toast div .text-sm.opacity-90 {
+  font-size: 1.6rem;
 }

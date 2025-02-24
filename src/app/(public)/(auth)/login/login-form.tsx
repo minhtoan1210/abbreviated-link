@@ -1,28 +1,25 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import "./style.css";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
 import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form";
 // import { LoginBody, LoginBodyType } from '@/schemaValidations/auth.schema'
 import { zodResolver } from "@hookform/resolvers/zod";
 // import { useLoginMutation } from '@/queries/useAuth'
 // import { handleErrorApi } from '@/lib/utils'
-import { toast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import { LoginBody, LoginBodyType } from "@/schemaValidations/auth.schema";
 import Link from "next/link";
+import { useLoginMutation } from "@/queries/useAuth";
+import authApiRequest from "@/apiRequests/auth";
 
 export default function LoginForm() {
-  //   const loginMutation = useLoginMutation()
+  const { toast } = useToast();
+  const loginMutation = useLoginMutation();
+
   const form = useForm<LoginBodyType>({
     resolver: zodResolver(LoginBody),
     defaultValues: {
@@ -30,24 +27,28 @@ export default function LoginForm() {
       password: "",
     },
   });
-  
+
   const router = useRouter();
 
-  const onSubmit = async (data: LoginBodyType) => {
-    // Khi nhấn submit thì React hook form sẽ validate cái form bằng zod schema ở client trước
-    // Nếu không pass qua vòng này thì sẽ không gọi api
-    // if (loginMutation.isPending) return
-    // try {
-    //   const result = await loginMutation.mutateAsync(data)
-    //   toast({
-    //     description: result.payload.message
-    //   })
-    //   router.push('/manage/dashboard')
-    // } catch (error: any) {
-    //   handleErrorApi({
-    //     error,
-    //     setError: form.setError
-    //   })
+  const onSubmit = async (values: LoginBodyType) => {
+    if (loginMutation.isPending) return;
+    try {
+      const result = await authApiRequest.login(values);
+      await authApiRequest.auth({
+        accessToken: result.data.access_token,
+        refreshToken: result.data.refresh_token,
+        expiresAt: result.data.expiresIn,
+      });
+
+      toast({
+        description: "Login Thành Công",
+        className: "text-[18px] !important toast",
+      });
+      router.push('/')
+      router.refresh()
+    } catch (error: any) {
+      console.error("Lỗi khi login:", error);
+    }
   };
 
   return (
@@ -77,7 +78,7 @@ export default function LoginForm() {
                           required
                           {...field}
                         />
-                        <FormMessage />
+                        <FormMessage className="error" />
                       </div>
                     </FormItem>
                   )}
@@ -95,7 +96,7 @@ export default function LoginForm() {
                           required
                           {...field}
                         />
-                        <FormMessage />
+                        <FormMessage className="error" />
                       </div>
                     </FormItem>
                   )}
@@ -111,16 +112,6 @@ export default function LoginForm() {
           </Form>
         </CardContent>
       </Card>
-      <div className="login-other">
-        <div className="title">Log in with</div>
-        <div className="btn-other">
-          <Link href='/' className="tbn-fb">Facebook</Link>
-          <Link href='/' className="tbn-google">Google</Link>
-          <Link href='/' className="tbn-twitter">Twitter</Link>
-        </div>
-        <div className="title-sub">You do not have an account?</div>
-        <div className="btn-create">Create an account</div>
-      </div>
     </>
   );
 }

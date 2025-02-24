@@ -1,5 +1,5 @@
 'use client'
-import { useDemo } from "@/queries/useDemo";
+import { useDemo } from "@/queries/useAuth";
 import Image from "next/image";
 
 export default function Homee() {
