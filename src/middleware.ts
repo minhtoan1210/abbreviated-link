@@ -6,10 +6,9 @@ const unAuthPaths = ["/login", "/register"];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const sessionToken = request.cookies.get("sessionToken")?.value;
+  // const sessionToken = request.cookies.get("sessionToken")?.value;
+  const sessionToken ="ASdas"
 
-  console.log("SessionToken:", sessionToken);
-  
   if (pathname === "/login" && !sessionToken) {
     return NextResponse.next();
   }
