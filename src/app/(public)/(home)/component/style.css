@@ -966,6 +966,7 @@
 
 .discover .text-description {
     color: var(--col_txt);
+    padding: 0 2.8rem;
     line-height: 1.6;
     font-size: 1.6rem;
     text-align: center;
@@ -1060,7 +1061,7 @@
 
 .discover .discover-url {
     border-radius: 0.8rem;
-    padding: 12px;
+    padding: 1.2rem 2.8rem;
     margin: 1.5rem auto;
     position: relative;
     width: 100%;
@@ -1121,13 +1122,14 @@
     color: #0e1527;
     box-shadow: 0 3px 6px 0 rgb(0 0 0 / .1);
     margin-top: 1.6rem;
-    padding: 1.4rem;
+    padding: 1.4rem 2.8rem;
     border-radius: 0.8rem;
     margin-bottom: 3.6rem;
 }
 
 .linkanalytics {
-    padding: 2.6rem 0rem;
+    border-radius: 0.8rem;
+    padding: 2.6rem 2.8rem;
     background: radial-gradient(circle farthest-corner at 10% 0%, #efeff9 33%, #ebf2ff 93.6%);
 }
 
@@ -1167,6 +1169,7 @@
     margin-top: 2.4rem;
     margin-bottom: 2.4rem;
 }
+
 .linkanalytics .alytics .left .btn-seelink {
     display: flex;
     align-items: center;
@@ -1194,10 +1197,10 @@
 
 .linkanalytics .alytics {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
 }
 
-.linkanalytics .alytics .right img{
+.linkanalytics .alytics .right img {
     width: 41rem;
 }
 
@@ -1252,7 +1255,7 @@
     border-radius: 5rem;
     font-size: 1.4rem;
     font-weight: 300;
-    margin-bottom: 1.5rem ;
+    margin-bottom: 1.5rem;
     width: 13rem;
 }
 
@@ -1291,7 +1294,7 @@
     border-radius: 0.8rem;
 }
 
-.cuttly-surveys .right .btn-seelink img{
+.cuttly-surveys .right .btn-seelink img {
     width: 3.2rem;
     height: 3.2rem;
     margin-right: 2.4rem;
@@ -1300,4 +1303,740 @@
 .cuttly-surveys .right .btn-seelink span {
     font-size: 1.4rem;
     color: #ffffff;
+}
+
+.inbio {
+    border-radius: 0.8rem;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-image: radial-gradient(circle farthest-corner at 10% 0%, #f7f8ff 33%, #eee4ff 93.6%);
+    background: radial-gradient(50% 45% at 100% 100%, var(--col_white) 0, var(--col_main_light) 100%), radial-gradient(61% 48% at 0 100%, rgb(255 255 255 / 85%) 0, #fff0 100%), var(--col_white);
+}
+
+.inbio .text-inbio {
+    color: var(--col_txt);
+    background: var(--col_white);
+    padding: 0.8rem 1.6rem;
+    border-radius: 5rem;
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    width: 14rem;
+}
+
+.inbio .text-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--col_txt);
+}
+
+.inbio .text-description {
+    color: var(--col_txt);
+    line-height: 1.6;
+    font-size: 1.6rem;
+    margin: 2rem 0rem;
+}
+
+.inbio .btn-see {
+    display: flex;
+    align-items: center;
+    background: var(--col_main);
+    width: 28rem;
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+    margin-bottom: 1.6rem;
+}
+
+.inbio .btn-see img {
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-right: 2.4rem;
+}
+
+.inbio .btn-see span {
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
+.inbio .list_tick {
+    display: flex;
+    margin-bottom: 1.4rem;
+}
+
+.inbio .list_tick svg {
+    width: 2rem;
+    height: 2rem;
+    padding-top: 0.4rem;
+    color: var(--col_main);
+    margin-right: 1.6rem;
+}
+
+.inbio .list_tick .tick-title {
+    font-size: 1.6rem;
+    color: #0e1527;
+    font-weight: 700;
+}
+
+.inbio .list_tick .tick-description {
+    font-size: 1.6rem;
+    color: #0e1527;
+}
+
+.inbio .right .phone {
+    position: absolute;
+    top: calc(50% - 0.5rem);
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.925);
+    z-index: 1;
+}
+
+.inbio .right {
+    position: relative;
+}
+
+.inbio .right .phone .phone-big {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 24rem;
+    height: auto;
+    aspect-ratio: 6 / 12;
+    align-items: center;
+    border-radius: 32px;
+    background: var(--col_grey_light);
+    box-shadow: 0 25px 50px -20px rgb(17 17 17 / 20%), 0 16px 32px -16px rgb(17 17 17 / 20%), inset 0 -2px 5px 0 rgb(0 0 0 / 20%);
+}
+
+.inbio .right .phone .phone-big .phone-screen {
+    position: relative;
+    margin: 0.8rem;
+    display: block;
+    border-radius: 2.6rem;
+    width: calc(100% - 1.6rem);
+    height: calc(100% - 1.6rem);
+    overflow: hidden;
+    background: var(--col_white);
+}
+
+.inbio .right .phone .phone-big .phone-details-top {
+    position: absolute;
+    top: 0.8rem;
+    left: calc(50% - 5rem);
+    width: 10rem;
+    height: 1.8rem;
+    z-index: 0;
+    background: var(--col_grey_light);
+    border-bottom-right-radius: 4.5rem;
+    border-bottom-left-radius: 4.5rem;
+}
+
+.inbio .right .phone .phone-big .phone-details-top hr:nth-child(1) {
+    background: var(--col_white);
+    width: 4rem;
+    height: 0.6rem;
+    position: absolute;
+    top: 0.4rem;
+    left: 2.6rem;
+    margin: 0;
+    border-radius: 5rem;
+}
+
+.inbio .right .phone .phone-big .phone-details-top hr:nth-child(2) {
+    background: var(--col_white);
+    width: 0.6rem;
+    height: 0.6rem;
+    position: absolute;
+    top: 0.4rem;
+    left: 7.2rem;
+    margin: 0;
+    border-radius: 5rem;
+}
+
+.inbio .right .phone .phone-big .phone-details-side-l {
+    position: absolute;
+    background: #fff0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.inbio .right .phone .phone-big .phone-details-side-l hr:nth-child(1) {
+    position: absolute;
+    top: 7.5rem;
+    left: -0.3rem;
+    width: 0.3rem;
+    height: 2.5rem;
+    background: var(--col_main_light);
+    border-top-left-radius: 5rem;
+    border-bottom-left-radius: 5rem;
+}
+
+.inbio .right .phone .phone-big .phone-details-side-l hr:nth-child(2) {
+    position: absolute;
+    top: 11.5rem;
+    left: -0.3rem;
+    width: 0.3rem;
+    height: 4rem;
+    background: var(--col_main_light);
+    border-top-left-radius: 5rem;
+    border-bottom-left-radius: 5rem;
+}
+
+.inbio .right .phone .phone-big .phone-details-side-r {
+    position: absolute;
+    top: 9rem;
+    right: -0.3rem;
+    width: 0.3rem;
+    height: 6rem;
+    background: var(--col_main_light);
+    border-top-right-radius: 5rem;
+    border-bottom-right-radius: 5rem;
+}
+
+.qrcodegenerato .text-qrcodegenerato {
+    background: var(--col_main_light);
+    color: var(--col_txt);
+    padding: 0.8rem 1.6rem;
+    border-radius: 5rem;
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    width: 16rem;
+}
+
+.qrcodegenerato .text-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--col_txt);
+    margin-bottom: 1.4rem;
+}
+
+.qrcodegenerato .text-title span {
+    color: var(--col_green);
+}
+
+.qrcodegenerato .text-description {
+    color: var(--col_txt);
+    line-height: 1.6;
+    font-size: 1.6rem;
+    margin-bottom: 1.4rem;
+}
+
+.qrcodegenerato {
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+}
+
+.qrcodegenerato .right div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+}
+
+.qrcodegenerato .right div {
+    font-size: 1.6rem;
+}
+
+.qrcodegenerato .right div svg {
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+.qrcodegenerato .right img {
+    margin: auto;
+    width: 18rem;
+    height: 18rem;
+}
+
+.sms {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem;
+    background-image: radial-gradient(circle farthest-corner at 10% 0%, #efeff9 33%, #ebf2ff 93.6%);
+    background: radial-gradient(50% 45% at 100% 100%, var(--col_white) 0, var(--col_main_light) 100%), radial-gradient(61% 48% at 0 100%, rgb(255 255 255 / 85%) 0, #fff0 100%), var(--col_white);
+    border-radius: 5rem;
+}
+
+.sms .text-sms {
+    color: var(--col_txt);
+    background: var(--col_white);
+    padding: 0.8rem 1.6rem;
+    border-radius: 5rem;
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    width: 35rem;
+}
+
+.sms .text-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--col_txt);
+}
+
+.sms .text-description {
+    font-size: 1.6rem;
+    color: var(--col_txt);
+    line-height: 1.6;
+    margin: 1.6rem 0rem;
+}
+
+.sms .sms-link {
+    margin-top: 1.4rem;
+    display: flex;
+}
+
+.sms .sms-link svg {
+    margin-right: 1.4rem;
+}
+
+.sms .sms-link span {
+    font-size: 1.6rem;
+    color: #0e1527;
+    font-weight: 700;
+}
+
+.sms .text-see {
+    margin-top: 1.4rem;
+    display: flex;
+    align-items: center;
+    background: var(--col_main);
+    width: 28rem;
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+}
+
+.sms .text-see img {
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-right: 2.4rem;
+}
+
+.sms .text-see span {
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
+.sms .right img {
+    width: 33.4rem;
+    height: 39.5rem;
+    margin: auto;
+}
+
+.mastering .mastering-title {
+    text-align: center;
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--col_txt);
+    margin-top: 1.6rem;
+    margin-bottom: 2rem;
+}
+
+.mastering .mastering-title span {
+    font-weight: 500;
+}
+
+.mastering .card .card-title {
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-top: 1.4rem 0rem 1.6rem 0rem;
+}
+
+.mastering .card .card-description {
+    font-size: 1.6rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2em !important;
+    max-height: 6em;
+}
+
+.mastering .card .item-btn-link {
+    display: flex;
+    align-items: center;
+    background: var(--col_main);
+    width: 28rem;
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+}
+
+.mastering .card .item-btn-link img {
+    width: 2.5rem;
+    height: 3.2rem;
+    margin-right: 2.4rem;
+}
+
+.mastering .card .item-btn-link span {
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 34rem 34rem 34rem;
+    grid-column-gap: 2.6rem;
+    justify-content: center;
+    margin-bottom: 2.6rem;
+}
+
+.card .item {
+    border-radius: 0.6rem;
+    padding-bottom: 1.6rem;
+    box-shadow: 0 0 0 1px rgb(14 63 126 / .05), 0 1.5px 1.5px -.5px rgb(42 51 69 / .07), 0 4px 4px -2px rgb(42 51 70 / .06), 0 7px 7px -3.5px rgb(42 51 70 / .05), 0 14px 14px -7px rgb(14 63 126 / .04), 0 26px 26px -13px rgb(14 63 126 / .03);
+}
+
+.card .item img {
+    width: 34rem;
+    height: 17rem;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+}
+
+.card .item .card-title {
+    font-size: 1.9rem;
+    margin-top: 1.2rem;
+    margin-bottom: 1.6rem;
+    padding: 0rem 1.4rem;
+}
+
+.card .item .card-description {
+    margin-top: 1.2rem;
+    margin-bottom: 1.6rem;
+    padding: 0rem 1.4rem;
+}
+
+.mastering .card .item-btn-link {
+    margin: 0 1.4rem;
+}
+
+.pricing {
+    background: var(--col_main_light);
+}
+
+.pricing .pricing-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--col_txt);
+    text-align: center;
+}
+
+.pricing .pricing-title span {
+    font-weight: 500;
+}
+
+.pricing .pricing-customized {
+    text-align: center;
+    color: var(--col_txt);
+    line-height: 1.6;
+    font-size: 1.6rem;
+}
+
+.pricing .pricing-paymonthly {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pricing .pricing-paymonthly span {
+    font-size: 1.4rem;
+}
+
+.pricing-paymonthly .pricing-switch {
+    border: 1px solid #dee0e4;
+    margin: 0rem 1.4rem;
+}
+
+.pricing-paymonthly .pricing-switch span {
+    background-color: #fff;
+    margin-right: 1.2rem;
+}
+
+.pricing .pricing-money {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 1.6rem;
+}
+
+.pricing .pricing-money .item {
+    box-shadow: 0 1px 12px var(--col_main_light);
+    background-color: #fff;
+    padding: 1rem;
+}
+
+.pricing .pricing-money .item .item-header {
+    background: var(--col_main_light);
+    padding: 1rem 1rem 0.5rem 1rem;
+}
+
+.pricing .pricing-money .item .item-header .item-title {
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+
+.pricing .pricing-money .item .item-header .item-money {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--col_txt);
+    z-index: 1;
+    padding-top: 6px;
+}
+
+.pricing .pricing-money .item .item-header .item-money span {
+    font-size: 1.4rem;
+    color: var(--col_grey);
+    font-weight: 400;
+}
+
+.pricing .pricing-money .item .item-subtitle {
+    color: #6c757d;
+    font-size: 1.6rem;
+    margin-top: 1.6rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.1rem solid #6c757d;
+}
+
+.pricing .pricing-money .item .detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pricing .pricing-money .item .detail span {
+    font-size: 1.3rem;
+    font-weight: 0;
+    color: #0e1527;
+}
+
+
+.pricing .pricing-money .item .detail .title {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+
+.pricing .pricing-money .item a {
+    display: flex;
+    align-items: center;
+    background: var(--col_main);
+    width: 28rem;
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+    margin-top: 1.4rem;
+}
+
+.pricing .pricing-money .item a img {
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-right: 2.4rem;
+}
+
+.pricing .pricing-money .item a span {
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin: auto;
+}
+
+.pricing .btn-link-cuttly a {
+    display: flex;
+    align-items: center;
+    width: 20rem;
+    border-radius: 0.8rem;
+    margin: auto;
+    background: var(--col_white);
+    color: var(--col_main);
+    border: 1px solid var(--col_main);
+    margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
+    padding: 1.2rem;
+}
+
+.pricing .btn-link-cuttly a::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    opacity: .85;
+    background: var(--col_main);
+}
+
+.pricing .btn-link-cuttly a img {
+    width: 3.2rem;
+    height: 3.2rem;
+    z-index: 9;
+}
+
+.pricing .btn-link-cuttly a span {
+    font-size: 1.4rem;
+    color: var(--col_main);
+    margin-left: 3rem;
+}
+
+.faq .title-faq {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--col_txt);
+    text-align: center;
+    margin-top: 2.6rem;
+}
+
+.faq .subtitle {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: var(--col_main);
+    text-align: center;
+    margin-bottom: 1.6rem;
+}
+
+.accordion {
+    margin-bottom: 1.2rem;
+}
+
+.accordion .border-b {
+    border-bottom-width: 0px;
+    background: #ffffff;
+
+}
+
+.accordion button {
+    font-size: 1.8rem;
+    padding: 1.2rem;
+}
+
+.accordion button svg:nth-child(2) {
+    display: none;
+}
+
+.accordion h3 {
+    position: relative;
+    padding: 0;
+    height: auto;
+    background: var(--col_white);
+    border-radius: 12px;
+    box-shadow: 0 0 0 1px rgb(14 63 126 / .05), 0 1.5px 1.5px -.5px rgb(42 51 69 / .07), 0 4px 4px -2px rgb(42 51 70 / .06), 0 7px 7px -3.5px rgb(42 51 70 / .05), 0 14px 14px -7px rgb(14 63 126 / .04), 0 26px 26px -13px rgb(14 63 126 / .03);
+}
+
+.accordion .border-b .overflow-hidden {
+    padding: 1.2rem 1.2rem 0rem 1.2rem;
+    padding-top: 1.2rem;
+    border: 1px solid #F2F3F9;
+    font-size: 1.6rem;
+    color: #0e1527;
+    line-height: 1.4;
+}
+
+.comprehensive .comprehensive-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--col_txt);
+}
+
+.comprehensive .comprehensive-title span {
+    font-weight: 500;
+}
+
+.comprehensive .comprehensive-description {
+    color: var(--col_txt);
+    line-height: 1.6;
+    font-size: 1.6rem;
+}
+
+.comprehensive {
+    margin-top: 2.6rem;
+    padding: 2.6rem;
+    border-radius: 0.8rem;
+    display: grid;
+    grid-template-columns: auto 38rem;
+    background: radial-gradient(50% 45% at 100% 100%, var(--col_white) 0, var(--col_main_light) 100%), radial-gradient(61% 48% at 0 100%, rgb(255 255 255 / 85%) 0, #fff0 100%), var(--col_white);
+}
+
+.comprehensive .right .btn-link a:nth-child(1) {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(45deg, var(--col_green) 0%, var(--col_green_dark) 100%);
+    background-size: 300% 100%;
+    width: 17rem;
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+}
+
+.comprehensive .right .btn-link a:nth-child(1) img {
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-right: 2.4rem;
+}
+
+.comprehensive .right .btn-link a:nth-child(1) span {
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
+.comprehensive .right .btn-link a:nth-child(2) {
+    background: var(--col_main);
+    display: flex;
+    align-items: center;
+    background-size: 300% 100%;
+    width: 17rem;
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+    margin-top: 2rem;
+}
+
+.comprehensive .right .btn-link a:nth-child(2) img {
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-right: 2.4rem;
+}
+
+.comprehensive .right .btn-link a:nth-child(2) span { 
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
+.consistently .consistently-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--col_txt);
+    text-align: center;
+    margin-top: 2.6rem;
+    margin-bottom: 2.6rem;
+}
+
+.consistently .consistently-title span { 
+    font-weight: 400;
+    
+}
+
+.consistently .consistently-description { 
+    color: var(--col_txt);
+    line-height: 1.6;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 2.6rem;
+}
+
+.consistently .consistently-listimg, 
+.consistently .consistently-listimg2 {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+}
+
+.consistently .consistently-listimg img,
+.consistently .consistently-listimg2 img {
+    width: 14.5rem;
+}
+
+.consistently {
+    margin-bottom: 3rem;
 }
