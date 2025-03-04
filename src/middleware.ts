@@ -6,19 +6,40 @@ const unAuthPaths = ["/login", "/register"];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  // const sessionToken = request.cookies.get("sessionToken")?.value;
-  const sessionToken ="ASdas"
 
-  if (pathname === "/login" && !sessionToken) {
+  const accessToken = request.cookies.get("accessToken")?.value;
+  const refreshToken = request.cookies.get("refreshToken")?.value;
+
+  // const sessionToken ="ASdas"
+
+  if (pathname === "/login" && !accessToken && !refreshToken) {
     return NextResponse.next();
   }
 
-  if (privatePaths.some((path) => pathname.startsWith(path)) && !sessionToken) {
+  if (
+    privatePaths.some((path) => pathname.startsWith(path)) &&
+    !accessToken &&
+    !refreshToken
+  ) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  if (unAuthPaths.some((path) => pathname.startsWith(path)) && sessionToken) {
-    return NextResponse.redirect(new URL("/", request.url));
+  if (
+    unAuthPaths.some((path) => pathname.startsWith(path)) &&
+    accessToken &&
+    refreshToken
+  ) {
+    return NextResponse.redirect(new URL("/manage/dashboard", request.url));
+  }
+
+  if (
+    privatePaths.some((path) => pathname.startsWith(path)) &&
+    !accessToken &&
+    refreshToken
+  ) {
+    const url = new URL("/logout", request.url);
+    url.searchParams.set("refreshToken", refreshToken);
+    return NextResponse.redirect(url);
   }
 
   return NextResponse.next();

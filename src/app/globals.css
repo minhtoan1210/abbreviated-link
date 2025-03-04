@@ -37,7 +37,10 @@
   --primary-foreground: #868e9d;
   --col_main: #1b5aff;
   --col_main_2: #4235ef;
-  --col_green_dark: #23bf59
+  --col_green_dark: #23bf59;
+  --col_dark: #002482;
+  --col_green_light: #e6f5eb;
+  --col_accent_light: #ffe4d5;
 }
 
 .container {
@@ -67,4 +70,12 @@
 
   }
 
+}
+
+.p-1,.py-1\.5, .px-2 {
+  padding: 0;
+}
+
+.ant-switch.ant-switch-checked {
+  background: var(--col_green) !important;
 }

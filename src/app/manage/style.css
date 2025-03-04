@@ -1,4 +1,153 @@
-.icon-menuItem{
+.icon-menuItem {
     font-size: 1.8rem !important;
     width: 1.8rem;
+}
+
+.ant-menu-item-group-title {
+    color: #0E1527 !important;
+    font-size: 16px !important;
+    font-family: 700 !important;
+}
+
+.a-menuItem {
+    color: var(--col_dark) !important;
+}
+
+.header-manage {
+    display: flex;
+    align-items: center;
+}
+
+.header-manage .right {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.header-manage .right .input {
+    padding-left: 1.6rem;
+}
+
+.header-manage .right .input input {
+    background: var(--col_dark);
+    color: var(--col_white);
+    border: 1px solid #ffffff40;
+    outline: none;
+}
+
+.header-manage .right .input input:hover {
+    border: 1px solid rgba(255, 255, 255, .25);
+}
+
+.header-manage .right .input input::placeholder {
+    color: var(--col_white);
+    opacity: 1;
+}
+
+.header-manage .right .input .ant-input-group-addon button {
+    border-color: #3E5A9C;
+    background: #3E5A9C;
+}
+
+.header-manage .right .input .ant-input-group-addon button .ant-btn-icon {
+    color: white;
+}
+
+.header-manage .right .input .ant-input-group-addon button:hover {
+    border-inline-start-color: #3E5A9C;
+    color: #3E5A9C;
+}
+
+.header-manage .right .your-account {
+    color: white;
+    outline: none;
+    border: 1px solid black;
+    margin-right: 1.5rem;
+}
+
+.header-manage .right .your-account span {
+    color: black;
+}
+
+.header-manage .right .your-account svg {
+    filter: brightness(0.5);
+}
+
+.header-manage .right .dropdown-menu div {
+    font-size: 1.6rem !important;
+}
+
+.ant-layout-sider.ant-layout-sider-dark {
+    width: 240px !important;
+    max-width: 240px !important;
+    min-width: 240px !important;
+}
+
+.ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-collapsed {
+    width: 120px !important;
+    max-width: 120px !important;
+    min-width: 120px !important;
+}
+
+.header-manage .ant-btn:hover {
+    background: white !important;
+}
+
+
+.ant-tooltip-inner {
+    background-color: white !important;
+    /* Màu nền */
+    color: #ffffff !important;
+    /* Màu chữ */
+}
+
+.ant-tooltip-arrow::before {
+    background-color: black !important;
+    /* Màu nền mũi tên */
+}
+
+.discover-url .discover-url-addtag .ad_ads {
+    border: none;
+    color: var(--col_green);
+    background: var(--col_green_light);
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    vertical-align: middle;
+    float: none;
+    margin: 0 auto;
+    margin-left: 30px;
+    -moz-border-radius-topright: 6px;
+    -moz-border-radius-bottomright: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    position: relative;
+    font-size: 1.6rem;
+}
+
+.discover-url .discover-url-addtag .ad_ads::before {
+    content: 'AD';
+    position: absolute;
+    top: 5px;
+    left: -30px;
+    width: 40px;
+    height: 30px;
+    line-height: 25px;
+    text-align: center;
+    transform: rotate(-90deg);
+    background: var(--col_green);
+    color: var(--col_white);
+    font-weight: 500;
+    letter-spacing: 1px;
+    -webkit-border-radius: 6px 6px 0 0;
+    -moz-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+    font-size: 1.6rem;
+}
+
+.discover-url .discover-url-addtag .ad_ads:hover { 
+    border: none;
+    color: var(--col_white) !important;
+    background: var(--col_green);
 }

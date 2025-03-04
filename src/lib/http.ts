@@ -1,6 +1,13 @@
 import axios, { AxiosRequestConfig, AxiosError } from "axios";
 import envConfig from "@/config";
-import { normalizePath } from "@/lib/utils";
+import {
+  getAccessTokenFromLocalStorage,
+  normalizePath,
+  removeTokensFromLocalStorage,
+  setAccessTokenToLocalStorage,
+  setRefreshTokenToLocalStorage,
+} from "@/lib/utils";
+import { redirect } from "next/navigation";
 
 const ENTITY_ERROR_STATUS = 422;
 const AUTHENTICATION_ERROR_STATUS = 401;
@@ -22,6 +29,7 @@ export class EntityError extends HttpError {
 }
 
 const isClient = typeof window !== "undefined";
+let clientLogoutRequest: null | Promise<any> = null;
 
 const axiosInstance = axios.create({
   baseURL: envConfig.NEXT_PUBLIC_API_ENDPOINT,
@@ -35,7 +43,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use((config) => {
   if (isClient) {
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = getAccessTokenFromLocalStorage();
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
@@ -44,14 +52,50 @@ axiosInstance.interceptors.request.use((config) => {
 });
 
 axiosInstance.interceptors.response.use(
-  (response) => response,
-  (error: AxiosError) => {
+  (response) => {
+    if (isClient) {
+      const normalizeUrl = normalizePath(response.config.url || "");
+      
+      if (normalizeUrl === "api/auth/login") {
+        const { accessToken, refreshToken } = response.data;
+        setAccessTokenToLocalStorage(accessToken);
+        setRefreshTokenToLocalStorage(refreshToken);
+      }
+
+      if (normalizeUrl === "api/auth/logout") {
+        removeTokensFromLocalStorage();
+      }
+    }
+    return response;
+  },
+  async (error: AxiosError) => {
     if (error.response) {
-      const { status, data } = error.response;
+      const { status, data, config } = error.response;
+
       if (status === ENTITY_ERROR_STATUS) {
         return Promise.reject(new EntityError(data));
       } else if (status === AUTHENTICATION_ERROR_STATUS) {
-        console.log("Lỗi 401");
+        if (isClient) {
+          if (!clientLogoutRequest) {
+            clientLogoutRequest = fetch("/api/auth/logout", {
+              method: "POST",
+              body: null,
+            });
+
+            try {
+              await clientLogoutRequest;
+            } catch (error) {
+            } finally {
+              removeTokensFromLocalStorage();
+              clientLogoutRequest = null;
+              location.href = "/login"; // Chuyển hướng về trang đăng nhập
+            }
+          }
+        } else {
+          // Xử lý server-side logout
+          const accessToken = (config?.headers as any)?.Authorization?.split("Bearer ")[1];
+          redirect(`/logout?accessToken=${accessToken}`);
+        }
       }
       return Promise.reject(new HttpError(status, data));
     }
@@ -59,6 +103,7 @@ axiosInstance.interceptors.response.use(
   }
 );
 
+// Tạo object http chứa các method GET, POST, PUT, DELETE
 const http = {
   get<Response>(url: string, config?: AxiosRequestConfig & { baseUrl?: string }) {
     return axiosInstance.get<Response>(normalizePath(url), {

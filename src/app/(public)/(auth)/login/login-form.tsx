@@ -33,18 +33,22 @@ export default function LoginForm() {
   const onSubmit = async (values: LoginBodyType) => {
     if (loginMutation.isPending) return;
     try {
-      const result = await authApiRequest.login(values);
+
+      const result = await loginMutation.mutateAsync(values)
+
       await authApiRequest.auth({
         accessToken: result.data.access_token,
         refreshToken: result.data.refresh_token,
-        expiresAt: result.data.expiresIn,
+        access_expires_at: result.data.access_expires_at,
+        refresh_expires_at: result.data.refresh_expires_at,
       });
 
       toast({
         description: "Login Thành Công",
         className: "text-[18px] !important toast",
       });
-      router.push('/')
+
+      router.push('/manage/dashboard')
       router.refresh()
     } catch (error: any) {
       console.error("Lỗi khi login:", error);

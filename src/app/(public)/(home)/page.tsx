@@ -172,6 +172,7 @@ export default function Home() {
             Plus, enjoy advanced options like password-protected links and deep
             links — and much more.
           </div>
+          
           <div className="discover-url">
             <div className="discover-url-date">
               <Switch className="btn-switch" />
@@ -221,6 +222,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+
           <div className="discover-options">
             <p>
               By checking short links in your dashboard, you can perform

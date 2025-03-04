@@ -1,6 +1,9 @@
+import CardCuttlyShortLink from "@/components/card-cuttly-short-link";
+
 export default function dashboard() {
-  
   return (
-   <h1>asdasdas</h1>
+    <>
+      <CardCuttlyShortLink />
+    </>
   );
 }
