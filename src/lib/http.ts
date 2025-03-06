@@ -32,7 +32,7 @@ const isClient = typeof window !== "undefined";
 let clientLogoutRequest: null | Promise<any> = null;
 
 const axiosInstance = axios.create({
-  baseURL: envConfig.NEXT_PUBLIC_API_ENDPOINT,
+  baseURL: "",
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
@@ -53,16 +53,18 @@ axiosInstance.interceptors.request.use((config) => {
 
 axiosInstance.interceptors.response.use(
   (response) => {
+    console.log("response", response);
+    console.log("response.config.url", response.config.url);
     if (isClient) {
       const normalizeUrl = normalizePath(response.config.url || "");
-      
-      if (normalizeUrl === "api/auth/login") {
+      console.log("normalizeUrl", normalizeUrl)
+      if (normalizeUrl === "/api/auth/login") {
         const { accessToken, refreshToken } = response.data;
         setAccessTokenToLocalStorage(accessToken);
         setRefreshTokenToLocalStorage(refreshToken);
       }
 
-      if (normalizeUrl === "api/auth/logout") {
+      if (normalizeUrl === "/api/auth/logout") {
         removeTokensFromLocalStorage();
       }
     }
@@ -88,12 +90,14 @@ axiosInstance.interceptors.response.use(
             } finally {
               removeTokensFromLocalStorage();
               clientLogoutRequest = null;
-              location.href = "/login"; // Chuyển hướng về trang đăng nhập
+              
+              location.href = "/login";
             }
           }
         } else {
-          // Xử lý server-side logout
-          const accessToken = (config?.headers as any)?.Authorization?.split("Bearer ")[1];
+          const accessToken = (config?.headers as any)?.Authorization?.split(
+            "Bearer "
+          )[1];
           redirect(`/logout?accessToken=${accessToken}`);
         }
       }
@@ -103,30 +107,55 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-// Tạo object http chứa các method GET, POST, PUT, DELETE
 const http = {
-  get<Response>(url: string, config?: AxiosRequestConfig & { baseUrl?: string }) {
+  get<Response>(
+    url: string,
+    config?: AxiosRequestConfig & { baseUrl?: string }
+  ) {
     return axiosInstance.get<Response>(normalizePath(url), {
       ...config,
-      baseURL: config?.baseUrl ?? envConfig.NEXT_PUBLIC_API_ENDPOINT,
+      baseURL:
+        config?.baseUrl === undefined
+          ? envConfig.NEXT_PUBLIC_API_ENDPOINT
+          : config.baseUrl,
     });
   },
-  post<Response>(url: string, body: any, config?: AxiosRequestConfig & { baseUrl?: string }) {
+  post<Response>(
+    url: string,
+    body: any,
+    config?: AxiosRequestConfig & { baseUrl?: string }
+  ) {
     return axiosInstance.post<Response>(normalizePath(url), body, {
       ...config,
-      baseURL: config?.baseUrl ?? envConfig.NEXT_PUBLIC_API_ENDPOINT,
+      baseURL:
+        config?.baseUrl === undefined
+          ? envConfig.NEXT_PUBLIC_API_ENDPOINT
+          : config.baseUrl,
     });
   },
-  put<Response>(url: string, body: any, config?: AxiosRequestConfig & { baseUrl?: string }) {
+  put<Response>(
+    url: string,
+    body: any,
+    config?: AxiosRequestConfig & { baseUrl?: string }
+  ) {
     return axiosInstance.put<Response>(normalizePath(url), body, {
       ...config,
-      baseURL: config?.baseUrl ?? envConfig.NEXT_PUBLIC_API_ENDPOINT,
+      baseURL:
+        config?.baseUrl === undefined
+          ? envConfig.NEXT_PUBLIC_API_ENDPOINT
+          : config.baseUrl,
     });
   },
-  delete<Response>(url: string, config?: AxiosRequestConfig & { baseUrl?: string }) {
+  delete<Response>(
+    url: string,
+    config?: AxiosRequestConfig & { baseUrl?: string }
+  ) {
     return axiosInstance.delete<Response>(normalizePath(url), {
       ...config,
-      baseURL: config?.baseUrl ?? envConfig.NEXT_PUBLIC_API_ENDPOINT,
+      baseURL:
+        config?.baseUrl === undefined
+          ? envConfig.NEXT_PUBLIC_API_ENDPOINT
+          : config.baseUrl,
     });
   },
 };

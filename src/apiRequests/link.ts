@@ -3,7 +3,7 @@ import { CreateLinkBodyType, LinkResType } from "@/schemaValidations/link.schema
 
 const linkApiRequest = {
   listLink: () => http.get<any>("link/my-links"),
-  createLink: (body: CreateLinkBodyType) => http.post<LinkResType>("link/", body),
+  createLink: (body: { original: string }) => http.post<LinkResType>("/link/", body),
 };
 
 export default linkApiRequest;

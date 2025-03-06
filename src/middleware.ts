@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const privatePaths = ["/manage", "/"];
-const unAuthPaths = ["/login", "/register"];
+const privatePaths = ["/manage"];
+const unAuthPaths = ["/login", "/register", "/"];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -21,7 +21,7 @@ export function middleware(request: NextRequest) {
     !accessToken &&
     !refreshToken
   ) {
-    return NextResponse.redirect(new URL("/login", request.url));
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   if (

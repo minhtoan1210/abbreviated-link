@@ -9,8 +9,8 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const normalizePath = (path: string) => {
-  return path.startsWith('/') ? path.slice(1) : path
-}
+  return path.startsWith("/") ? path : `/${path}`;
+};
 
 export const handleErrorApi = ({
   error,
@@ -56,3 +56,20 @@ export const getRefreshTokenFromLocalStorage = () =>
 
 export const getAccessTokenFromLocalStorage = () =>
   isBrowser ? localStorage.getItem('accessToken') : null
+
+
+
+export const setLocalStorage = (key: string, value: any) => {
+  if (!key) return;
+  isBrowser && localStorage.setItem(key, JSON.stringify(value));
+};
+
+export const getLocalStorage = (key: string) => {
+  if (!key) return null;
+  return isBrowser ? JSON.parse(localStorage.getItem(key) || "null") : null;
+};
+
+export const removeLocalStorage = (key: string) => {
+  if (!key) return;
+  isBrowser && localStorage.removeItem(key);
+};

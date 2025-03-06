@@ -7,6 +7,7 @@ export async function POST(request: Request) {
   const refreshToken = cookieStore.get("refreshToken")?.value;
   cookieStore.delete("accessToken");
   cookieStore.delete("refreshToken");
+
   if (!accessToken || !refreshToken) {
     return Response.json(
       {
@@ -18,17 +19,20 @@ export async function POST(request: Request) {
     );
   }
   try {
-    // const result = await authApiRequest.sLogout({
-    //   accessToken,
-    //   refreshToken
-    // })
+    console.log()
+    const result = await authApiRequest.sLogout({
+      accessToken,
+      refreshToken
+    })
 
-    // return Response.json(result.payload)
+    console.log("result", result)
+    // return Response.json(result)
     
     return Response.json({
       message: "Logout thành công",
     });
   } catch (error) {
+    console.log("error", error)
     return Response.json(
       {
         message: "Lỗi khi gọi API đến server backend",

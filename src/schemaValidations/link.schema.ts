@@ -1,10 +1,7 @@
 import { z } from "zod";
 
 export const CreateLinkBody = z.object({
-    user: z.string(),
-    original: z.string(),
-    shorten: z.string(),
-   
+    original: z.string()
   })
 
 export const LinkhRes = z.object({

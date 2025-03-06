@@ -1,0 +1,169 @@
+.overview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #ffffff;
+    padding: 2.5rem;
+    grid-column-gap: 2.6rem;
+}
+
+.overview .part-allUrl .subtext,
+.overview .part-total .subtext,
+.overview .part-links .subtext,
+.overview .part-increment .subtext {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.overview .part-allUrl,
+.overview .part-total,
+.overview .part-links,
+.overview .part-increment {
+    background: rgb(248, 248, 248);
+    padding: 1.4rem 1.4rem 1.4rem 1.4rem;
+    border-radius: 0.8rem;
+}
+
+.overview .part-allUrl .title,
+.overview .part-total .title,
+.overview .part-links .title,
+.overview .part-increment .title {
+    font-style: normal;
+    color: var(--col_grey);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+    width: 100%;
+    font-size: 1.4rem;
+}
+
+.overview .part-allUrl .subtext .number,
+.overview .part-total .subtext .number,
+.overview .part-links .subtext .number,
+.overview .part-increment .subtext .number {
+    width: 100%;
+    font-size: 1.8rem;
+    color: var(--col_txt);
+    font-weight: 500;
+}
+
+.overview .part-allUrl .subtext svg,
+.overview .part-total .subtext svg,
+.overview .part-links .subtext svg,
+.overview .part-increment .subtext svg {
+    width: 3.6rem;
+    height: 3.6rem;
+    background: #ffffff;
+    padding: 0.8rem;
+    border-radius: 50%;
+}
+
+
+.overview .part-total {
+    background: var(--col_green_light);
+}
+
+.overview .part-links {
+    background: var(--col_main_light);
+}
+
+.overview .part-increment {
+    background: var(--col_accent_light);
+}
+
+.dashboard .box {
+    margin-top: 1.4rem;
+    display: grid;
+    grid-template-columns: 30rem auto;
+    grid-column-gap: 1.6rem;
+}
+
+.dashboard .box .left {
+    border: 1px solid var(--col_white);
+    border-radius: 0.8rem;
+    padding: 1.5rem 1.5rem 1.5rem;
+    display: table;
+    width: 100%;
+    background: var(--col_white);
+}
+
+.dashboard .box .left .title {
+    padding: 15px 0;
+    font-size: 1.6rem;
+    color: rgb(0 0 0 / 50%);
+}
+
+.dashboard .box .left .btn-create-link,
+.dashboard .box .left .btn-urls,
+.dashboard .box .left .btn-favourites,
+.dashboard .box .left .btn-selected-url {
+    box-shadow: 0 1px 12px var(--col_main_light);
+    height: 5.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #b7b7b7;
+    margin-top: 1.6rem;
+    pointer-events: none;
+}
+
+.dashboard .box .left .btn-create-link:hover,
+.dashboard .box .left .btn-urls:hover,
+.dashboard .box .left .btn-favourites:hover,
+.dashboard .box .left .btn-selected-url:hover {
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / .2);
+}
+
+.dashboard .box .left .input {
+    margin-top: 1.6rem;
+}
+
+.dashboard .box .left .input {
+    border: 1px solid rgb(0 0 0 / 15%);
+    padding: 1.4rem;
+    border-radius: 0.8rem;
+}
+
+.dashboard .box .left .input .ant-input-group-addon {
+    border: 0px;
+    background: white;
+}
+
+.dashboard .box .left .input input {
+    border: 0px;
+}
+
+.dashboard .box .left .input input:focus {
+    box-shadow: none;
+}
+
+.dashboard .box .right .input-shorten {
+    display: flex;
+    border: 1px solid var(--col_main);
+    padding: 0.8rem 0rem;
+    border-radius: 0.8rem;
+    background: white;
+}
+
+.dashboard .box .right .input-shorten input {
+    border: 0px;
+}
+
+.dashboard .box .right .input-shorten input:focus {
+    box-shadow: none;
+}
+
+.dashboard .box .right .input-shorten button:hover {
+    border-color: var(--col_green_dark);
+    background: var(--col_green_dark);
+}
+
+.dashboard .box .right .input-shorten button {
+    color: white;
+    background: var(--col_green);
+    font-weight: 500;
+    font-size: 1.4rem;
+    height: 5rem;
+    margin-right: 1.2rem;
+    width: 8rem;
+}

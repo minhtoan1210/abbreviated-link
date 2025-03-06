@@ -20,8 +20,9 @@ export default function RefreshToken() {
       const accessToken = getAccessTokenFromLocalStorage();
       const refreshToken = getRefreshTokenFromLocalStorage();
 
+      
       if (!accessToken || !refreshToken) return;
-
+      
       const decodedAccessToken = jwt.decode(accessToken) as {
         exp: number;
         iat: number;
@@ -34,16 +35,15 @@ export default function RefreshToken() {
 
       const now = Math.round(new Date().getTime() / 1000);
 
-      if (decodedRefreshToken.exp <= now) return;
-
+      if (decodedRefreshToken?.exp <= now) return;
       if (
-        decodedAccessToken.exp - now <
-        (decodedAccessToken.exp - decodedAccessToken.iat) / 3
+        decodedAccessToken?.exp - now <
+        (decodedAccessToken?.exp - decodedAccessToken?.iat) / 3
       ) {
         try {
           const res = await authApiRequest.refreshToken();
-          setAccessTokenToLocalStorage(res.data.accessToken);
-          setRefreshTokenToLocalStorage(res.data.refreshToken);
+          setAccessTokenToLocalStorage(res.data.access_token);
+          setRefreshTokenToLocalStorage(res.data.refresh_token);
         } catch (error) {
           clearInterval(interval);
         }
@@ -52,7 +52,7 @@ export default function RefreshToken() {
 
     checkAndRefreshToken();
 
-    const TIMEOUT = 1000;
+    const TIMEOUT = 100;
 
     interval = setInterval(checkAndRefreshToken, TIMEOUT);
     return () => {
