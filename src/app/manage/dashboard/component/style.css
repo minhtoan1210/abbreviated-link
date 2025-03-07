@@ -76,9 +76,10 @@
     display: flex;
     height: 4rem;
     align-items: center;
+    cursor: pointer;
 }
 
-.discover-url .discover-url-addtag .btn-icon a:hover {
+.discover-url .discover-url-addtag .btn-icon div:hover {
     background: var(--col_accent_light);
     color: var(--col_accent) ;
     border-radius: 50%;

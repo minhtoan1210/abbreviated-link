@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 const privatePaths = ["/manage"];
-const unAuthPaths = ["/login", "/register", "/"];
+const unAuthPaths = ["/login", "/register"];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -10,10 +10,15 @@ export function middleware(request: NextRequest) {
   const accessToken = request.cookies.get("accessToken")?.value;
   const refreshToken = request.cookies.get("refreshToken")?.value;
 
+  console.log("Path:", pathname);
   // const sessionToken ="ASdas"
 
   if (pathname === "/login" && !accessToken && !refreshToken) {
     return NextResponse.next();
+  }
+
+  if (pathname === "/" && accessToken && refreshToken) {
+    return NextResponse.redirect(new URL("/manage/dashboard", request.url));
   }
 
   if (
@@ -21,7 +26,7 @@ export function middleware(request: NextRequest) {
     !accessToken &&
     !refreshToken
   ) {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL("/login", request.url));
   }
 
   if (

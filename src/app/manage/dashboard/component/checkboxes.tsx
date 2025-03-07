@@ -1,31 +1,38 @@
 "use client";
-import { Space, Input, Button } from "antd";
+import { Input, Button } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
-import CardCuttlyShortLink from "@/components/card-cuttly-short-link";
 import { useRef, useState } from "react";
-import { useCreateLinkMutation } from "@/queries/useLink";
-import { useLogoutMutation } from "@/queries/useAuth";
-import { useRouter } from "next/navigation";
+import { useCreateLinkMutation, useLinkList } from "@/queries/useLink";
+import CardCuttlyShortLink from "./card-cuttly-short-link";
+import { toast } from "react-toastify";
+
+export type ListLinkhType = {
+  calls: number;
+  createdAt: string;
+  original: string;
+  shorten: string;
+  updatedAt: string;
+  user: string;
+  __v: 0;
+  _id: string;
+  active: boolean
+};
 
 export default function Checkboxes() {
-  const [loading, setLoading] = useState(false);
   const inputRef = useRef<any>(null);
-  const router = useRouter()
-  //   const { mutate, error, isPending } = useCreateLinkMutation();
+  const [pagination, setPagination] = useState({ page: 1, limit: 10 });
+  const { mutateAsync, isPending } = useCreateLinkMutation();
+  const linkList = useLinkList(pagination);
 
-  const { mutate, error, isPending } = useLogoutMutation();
-
-  const handleClick = () => {
-    //     setLoading(true);
-    //    const body = {
-    //         original: inputRef.current?.input.value as string,
-    //       }
-    const result = mutate();
-    console.log("result", result);
-
-    router.push('/login')
-
-    setTimeout(() => setLoading(false), 3000); // Fake API call
+  const handleClickAdd = async () => {
+    try {
+      await mutateAsync({
+        original: inputRef.current?.input.value as string,
+      });
+      toast.success("Thêm thành công");
+    } catch (error: any) {
+      toast.error(`Lỗi: ${error.toString()}`);
+    }
   };
 
   return (
@@ -52,13 +59,19 @@ export default function Checkboxes() {
             <Input placeholder="Paste long url and shorten it" ref={inputRef} />
             <Button
               loading={isPending}
-              onClick={handleClick}
+              onClick={handleClickAdd}
               className="btn-shorten"
             >
               {isPending ? "" : "Shorten"}
             </Button>
           </div>
-          <CardCuttlyShortLink />
+          {linkList?.data?.map((item: ListLinkhType, key: number) => {
+            return (
+              <div key={key}>
+                <CardCuttlyShortLink itemLink={item} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </>

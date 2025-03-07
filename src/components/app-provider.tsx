@@ -3,6 +3,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createContext, useContext, useState } from "react";
 import RefreshToken from "./refresh-token";
+import { ToastContainer } from "react-toastify";
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -39,6 +41,7 @@ export default function AppProvider({
     <QueryClientProvider client={queryClient}>
       <AppContext.Provider value={{ sessionToken, setSessionToken }}>
         {children}
+        <ToastContainer position="bottom-right" autoClose={2000} className='text-[14px]'/>
         <RefreshToken />
       </AppContext.Provider>
       <ReactQueryDevtools initialIsOpen={false} />

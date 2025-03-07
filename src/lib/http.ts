@@ -15,16 +15,21 @@ const AUTHENTICATION_ERROR_STATUS = 401;
 export class HttpError extends Error {
   status: number;
   payload: any;
-  constructor(status: number, payload: any, message = "Lỗi HTTP") {
-    super(message);
+  constructor(status: number, payload: any, message?: string) {
+    super(message || payload?.message || "Lỗi HTTP");
     this.status = status;
     this.payload = payload;
+    Object.setPrototypeOf(this, HttpError.prototype);
+  }
+  toString() {
+    return this.message; 
   }
 }
 
 export class EntityError extends HttpError {
   constructor(payload: any) {
-    super(ENTITY_ERROR_STATUS, payload, "Lỗi thực thể");
+    super(ENTITY_ERROR_STATUS, payload, payload?.message || "Lỗi thực thể");
+    Object.setPrototypeOf(this, EntityError.prototype);
   }
 }
 
@@ -53,8 +58,6 @@ axiosInstance.interceptors.request.use((config) => {
 
 axiosInstance.interceptors.response.use(
   (response) => {
-    console.log("response", response);
-    console.log("response.config.url", response.config.url);
     if (isClient) {
       const normalizeUrl = normalizePath(response.config.url || "");
       console.log("normalizeUrl", normalizeUrl)
@@ -73,12 +76,12 @@ axiosInstance.interceptors.response.use(
   async (error: AxiosError) => {
     if (error.response) {
       const { status, data, config } = error.response;
-
       if (status === ENTITY_ERROR_STATUS) {
         return Promise.reject(new EntityError(data));
       } else if (status === AUTHENTICATION_ERROR_STATUS) {
         if (isClient) {
           if (!clientLogoutRequest) {
+            console.log("error", error)
             clientLogoutRequest = fetch("/api/auth/logout", {
               method: "POST",
               body: null,
@@ -91,7 +94,7 @@ axiosInstance.interceptors.response.use(
               removeTokensFromLocalStorage();
               clientLogoutRequest = null;
               
-              location.href = "/login";
+              // location.href = "/login";
             }
           }
         } else {
@@ -139,6 +142,19 @@ const http = {
     config?: AxiosRequestConfig & { baseUrl?: string }
   ) {
     return axiosInstance.put<Response>(normalizePath(url), body, {
+      ...config,
+      baseURL:
+        config?.baseUrl === undefined
+          ? envConfig.NEXT_PUBLIC_API_ENDPOINT
+          : config.baseUrl,
+    });
+  },
+  patch<Response>(
+    url: string,
+    body: any,
+    config?: AxiosRequestConfig & { baseUrl?: string }
+  ) {
+    return axiosInstance.patch<Response>(normalizePath(url), body, {
       ...config,
       baseURL:
         config?.baseUrl === undefined

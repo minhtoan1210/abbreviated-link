@@ -3,8 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AppProvider from "@/components/app-provider";
 import { Toaster } from "@/components/ui/toaster";
-import Header from "./(public)/header";
-import Footer from "./(public)/footer";
+import '@ant-design/v5-patch-for-react-19';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

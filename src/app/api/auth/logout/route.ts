@@ -19,7 +19,6 @@ export async function POST(request: Request) {
     );
   }
   try {
-    console.log()
     const result = await authApiRequest.sLogout({
       accessToken,
       refreshToken

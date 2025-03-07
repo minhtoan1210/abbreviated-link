@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { useLogoutMutation } from "@/queries/useAuth";
+import { useRouter } from "next/navigation";
 
 type SearchProps = GetProps<typeof Input.Search>;
 
@@ -26,6 +28,8 @@ export default function Sidebar({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const [collapsed, setCollapsed] = useState(false);
+  const router = useRouter();
+  const logoutMutation = useLogoutMutation();
 
   const onSearch: SearchProps["onSearch"] = (value, _e, info) => {
     console.log(info?.source, value);
@@ -33,6 +37,11 @@ export default function Sidebar({
 
   const onClick: MenuProps["onClick"] = (e) => {
     console.log("click ", e);
+  };
+
+  const handleLogout = async () => {
+    await logoutMutation.mutateAsync();
+    router.push("/login");
   };
 
   return (
@@ -96,18 +105,18 @@ export default function Sidebar({
                 <DropdownMenuItem>
                   <Link
                     href="/"
-                    className="text-[16px  text-center] w-full p-[15px] hover:text-[#ffffff] hover:bg-[#1b5aff] text-[12px]"
+                    className="text-[16px  text-center] w-full p-[15px] hover:text-[#ffffff] hover:bg-[#1b5aff] text-[12px] cursor-pointer"
                   >
                     Edit account
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Link
-                    href="/"
-                    className="text-[16px  text-center] w-full p-[15px] hover:text-[#ffffff] hover:bg-[#1b5aff] text-[12px]"
+                  <div
+                    className="text-[16px  text-center] w-full p-[15px] hover:text-[#ffffff] hover:bg-[#1b5aff] text-[12px] cursor-pointer"
+                    onClick={handleLogout}
                   >
                     Log out
-                  </Link>
+                  </div>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
               </DropdownMenuContent>

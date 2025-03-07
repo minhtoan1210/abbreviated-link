@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import jwt from 'jsonwebtoken'
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -6,6 +7,9 @@ export async function POST(request: Request) {
 
   const refreshToken = body.refreshToken as string;
   const accessToken = body.accessToken as string;
+
+  const decodedAccessToken = jwt.decode(accessToken) as { exp: number }
+  const decodedRefreshToken = jwt.decode(refreshToken) as { exp: number }
 
   if (!refreshToken || !accessToken) {
     return Response.json(
@@ -21,7 +25,7 @@ export async function POST(request: Request) {
     httpOnly: true,
     sameSite: "lax",
     secure: true,
-    expires: new Date(body.access_expires_at),
+    expires: decodedAccessToken.exp * 1000,
   });
 
   cookieStore.set("refreshToken", body.refreshToken, {
@@ -29,7 +33,7 @@ export async function POST(request: Request) {
     httpOnly: true,
     sameSite: "lax",
     secure: true,
-    expires: new Date(body.refresh_expires_at),
+    expires: decodedRefreshToken.exp * 1000,
   });
 
   return Response.json({

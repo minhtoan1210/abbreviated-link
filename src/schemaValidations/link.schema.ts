@@ -9,10 +9,7 @@ export const LinkhRes = z.object({
   message: z.string(),
 });
 
-// export const ListLinkhRes = z.object({
-//     data: CreateLinkBody,
-//     message: z.string(),
-//   });
+
   
 
 export type LinkResType = z.TypeOf<typeof LinkhRes>;
