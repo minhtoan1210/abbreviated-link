@@ -1999,7 +1999,7 @@
     margin-right: 2.4rem;
 }
 
-.comprehensive .right .btn-link a:nth-child(2) span { 
+.comprehensive .right .btn-link a:nth-child(2) span {
     font-size: 1.4rem;
     color: #ffffff;
 }
@@ -2013,12 +2013,12 @@
     margin-bottom: 2.6rem;
 }
 
-.consistently .consistently-title span { 
+.consistently .consistently-title span {
     font-weight: 400;
-    
+
 }
 
-.consistently .consistently-description { 
+.consistently .consistently-description {
     color: var(--col_txt);
     line-height: 1.6;
     font-size: 1.6rem;
@@ -2026,10 +2026,10 @@
     margin-bottom: 2.6rem;
 }
 
-.consistently .consistently-listimg, 
+.consistently .consistently-listimg,
 .consistently .consistently-listimg2 {
     display: grid;
-    grid-template-columns: repeat(6,1fr);
+    grid-template-columns: repeat(6, 1fr);
 }
 
 .consistently .consistently-listimg img,

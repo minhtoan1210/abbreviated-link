@@ -1,7 +1,7 @@
 "use client";
 import { Input, Button } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useCreateLinkMutation, useLinkList } from "@/queries/useLink";
 import CardCuttlyShortLink from "./card-cuttly-short-link";
 import { toast } from "react-toastify";
@@ -11,18 +11,24 @@ export type ListLinkhType = {
   createdAt: string;
   original: string;
   shorten: string;
+  short_link: string;
   updatedAt: string;
   user: string;
   __v: 0;
   _id: string;
-  active: boolean
+  active: boolean;
+  favicon: string;
 };
 
 export default function Checkboxes() {
   const inputRef = useRef<any>(null);
   const [pagination, setPagination] = useState({ page: 1, limit: 10 });
   const { mutateAsync, isPending } = useCreateLinkMutation();
-  const linkList = useLinkList(pagination);
+  const { data: linkList, refetch } = useLinkList(pagination);
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   const handleClickAdd = async () => {
     try {
@@ -65,7 +71,7 @@ export default function Checkboxes() {
               {isPending ? "" : "Shorten"}
             </Button>
           </div>
-          {linkList?.data?.map((item: ListLinkhType, key: number) => {
+          {linkList?.map((item: ListLinkhType, key: number) => {
             return (
               <div key={key}>
                 <CardCuttlyShortLink itemLink={item} />

@@ -34,6 +34,9 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import ComponentIconQR from "./componentQR";
 import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { string } from "zod";
+import ComponentQrCode from "../../(btnIcon)/qr-code/page";
 
 export default function CardCuttlyShortLink({
   itemLink,
@@ -43,6 +46,7 @@ export default function CardCuttlyShortLink({
   const { mutate } = useDeleteLinkMutation();
   const { mutate: updateLinkMutation, isPending } = useUpdateLinkMutation();
   const { toast } = useToast();
+  const router = useRouter();
   const [openDrawer, setOpenDrawer] = useState(false);
   const copyText = useRef(null);
   const [checked, setChecked] = useState(itemLink.active);
@@ -64,8 +68,6 @@ export default function CardCuttlyShortLink({
   };
 
   const handleCheckSwitch = (value: any) => {
-    console.log("value", value);
-
     updateLinkMutation({
       id: itemLink._id,
       body: {
@@ -74,6 +76,10 @@ export default function CardCuttlyShortLink({
     });
 
     setChecked(value);
+  };
+
+  const handleChangUrl = (value: ListLinkhType) => {
+    router.push(`/manage/change-url-name?id=${value._id}`);
   };
 
   const IconDiscover = [
@@ -86,6 +92,7 @@ export default function CardCuttlyShortLink({
     {
       title: "Change url alias / name",
       icon: <Fingerprint />,
+      click: (value: ListLinkhType) => handleChangUrl(value),
     },
     {
       title: "UTM",
@@ -122,7 +129,7 @@ export default function CardCuttlyShortLink({
     {
       title: "QR code",
       icon: <QrCode />,
-      component: <ComponentIconQR />,
+      component: <ComponentQrCode />,
     },
     {
       title: "Remove this link",
@@ -147,7 +154,7 @@ export default function CardCuttlyShortLink({
         </div>
       </div>
       <div className="discover-url-title">
-        <img src="../favicon-32x32.png" alt="" />
+        <img src={itemLink?.favicon} alt="" />
         <span>Cuttly | URL Shortener, Branded URLs, Link Management, API </span>
       </div>
       <Link href="/" className="discover-url-link">
@@ -156,7 +163,7 @@ export default function CardCuttlyShortLink({
       <div className="discover-url-linkrandedshort">
         <Link href={itemLink?.original} legacyBehavior>
           <a target="_blank" rel="noopener noreferrer">
-            {itemLink?.shorten}
+            {itemLink?.short_link}
           </a>
         </Link>
       </div>
@@ -183,7 +190,7 @@ export default function CardCuttlyShortLink({
                     open={openDrawer}
                     onClose={() => setOpenDrawer(false)}
                   >
-                    "hehe"
+                    {item?.component}
                   </Drawer>
                 ) : (
                   ""
