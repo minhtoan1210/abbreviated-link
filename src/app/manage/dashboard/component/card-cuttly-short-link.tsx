@@ -32,10 +32,8 @@ import {
   useUpdateLinkMutation,
 } from "@/queries/useLink";
 import { useToast } from "@/hooks/use-toast";
-import ComponentIconQR from "./componentQR";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { string } from "zod";
 import ComponentQrCode from "../../(btnIcon)/qr-code/page";
 
 export default function CardCuttlyShortLink({

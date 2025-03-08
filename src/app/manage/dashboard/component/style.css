@@ -170,3 +170,10 @@
 .ant-tooltip-arrow::before {
     background-color: white !important;
 }
+
+.box .left .active {
+    color: #0e1527 !important;
+    border: 1px solid var(--col_green);
+    pointer-events: auto !important;
+    cursor: pointer;
+}

@@ -15,8 +15,6 @@ export default function ChangeUrlName() {
   const router = useRouter()
 
   const handleChangUrl = () => {
-    console.log("Hehe", inputChangeUr.current.input.value);
-
     try {
       updateLinkMutation.mutate({
         id: id as string,

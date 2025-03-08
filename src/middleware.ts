@@ -10,9 +10,6 @@ export function middleware(request: NextRequest) {
   const accessToken = request.cookies.get("accessToken")?.value;
   const refreshToken = request.cookies.get("refreshToken")?.value;
 
-  console.log("Path:", pathname);
-  // const sessionToken ="ASdas"
-
   if (pathname === "/login" && !accessToken && !refreshToken) {
     return NextResponse.next();
   }

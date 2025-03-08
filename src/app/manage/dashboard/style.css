@@ -105,6 +105,10 @@
     color: #b7b7b7;
     margin-top: 1.6rem;
     pointer-events: none;
+    border-radius: 0.8rem;
+    justify-content: flex-start;
+    padding-left: 2rem;
+    pointer-events: none;
 }
 
 .dashboard .box .left .btn-create-link:hover,

@@ -36,7 +36,11 @@ export const useDeleteLinkMutation = () => {
 };
 
 export const useUpdateLinkMutation = () => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: linkApiRequest.updateLink,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["links"] });
+    },
   });
 };
