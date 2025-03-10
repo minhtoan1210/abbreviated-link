@@ -1,0 +1,288 @@
+.custom-branded-domains .account {
+    background: transparent;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    color: var(--col_dark);
+    font-weight: 500;
+    border-radius: 0.4rem;
+    font-size: 1.8rem;
+    letter-spacing: 0.1rem;
+}
+
+.custom-branded-domains .box {
+    display: grid;
+    grid-template-columns: auto 37rem;
+    grid-column-gap: 2.5rem;
+}
+
+.custom-branded-domains .box .card-level {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.5rem;
+    border: 2px solid var(--col_main);
+    background: var(--col_white);
+    box-shadow: 0 20px 50px rgb(0 0 0 / 10%);
+}
+
+.custom-branded-domains .box .card-level:hover {
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / .2);
+}
+
+.custom-branded-domains .box .card-level .starup {
+    width: 8rem;
+    height: 8rem;
+}
+
+.custom-branded-domains .box .card-level .card-text .title {
+    font-weight: 500;
+    font-size: 1.8rem;
+    color: var(--col_txt);
+    padding-bottom: 0.5rem;
+}
+
+.custom-branded-domains .box .card-level .card-text .description {
+    color: var(--col_grey);
+    margin-top: 0.2rem;
+}
+
+.custom-branded-domains .box .card-body .title {
+    background: transparent;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    color: var(--col_dark);
+    font-weight: 500;
+    border-radius: 0.4rem;
+    font-size: 1.6rem;
+    text-align: left;
+    letter-spacing: 0.1rem;
+}
+
+.custom-branded-domains .box .card-body {
+    background-color: #fff;
+    margin-top: 2rem;
+    padding: 1.25rem;
+    border-radius: 0.8rem;
+}
+
+.custom-branded-domains .box .card-body p {
+    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
+    position: 0rem 1rem;
+}
+
+.custom-branded-domains .box .card-body .custom-domains {
+    padding: 1.2rem 2rem;
+    border: 1px solid rgba(0, 0, 0, .125);
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.custom-branded-domains .box .card-body .btn-add {
+    width: 30rem;
+    display: grid;
+    grid-template-columns: 3.2rem auto;
+}
+
+.custom-branded-domains .box .card-body .btn-add span {
+    text-align: center;
+}
+
+.drawer-help .ant-drawer-body a {
+    display: block;
+    padding: 1rem 1.5rem;
+    border: 0.1rem solid rgba(0, 0, 0, .125);
+    border-radius: 0.6rem;
+}
+
+
+.drawer-help .ant-drawer-body a:hover {
+    background-color: #f8f9fa;
+    color: var(--col_main_2);
+}
+
+.custom-branded-domains .box .profile-edit {
+    box-shadow: 0 0.1rem 1.2rem #f2f3f4;
+    border-radius: 0.8rem;
+    background: var(--col_white);
+}
+
+.custom-branded-domains .box .profile-edit .profile-key,
+.custom-branded-domains .box .profile-edit .profile-email,
+.custom-branded-domains .box .profile-edit .profile-password,
+.custom-branded-domains .box .profile-edit .profile-security,
+.custom-branded-domains .box .profile-edit .profile-links,
+.custom-branded-domains .box .profile-edit .profile-other-settings,
+.custom-branded-domains .box .profile-edit .profile-billing,
+.custom-branded-domains .box .profile-edit .profile-delete {
+    padding: 1.2rem 1.5rem;
+}
+
+.custom-branded-domains .box .profile-edit .profile-key:hover,
+.custom-branded-domains .box .profile-edit .profile-email:hover,
+.custom-branded-domains .box .profile-edit .profile-password:hover,
+.custom-branded-domains .box .profile-edit .profile-security:hover,
+.custom-branded-domains .box .profile-edit .profile-links:hover,
+.custom-branded-domains .box .profile-edit .profile-other-settings:hover,
+.custom-branded-domains .box .profile-edit .profile-billing:hover,
+.custom-branded-domains .box .profile-edit .profile-delete:hover {
+    background: var(--col_main_light);
+}
+
+.custom-branded-domains .box .profile-edit .profile-key .title,
+.custom-branded-domains .box .profile-edit .profile-email .title,
+.custom-branded-domains .box .profile-edit .profile-password .title,
+.custom-branded-domains .box .profile-edit .profile-security .title,
+.custom-branded-domains .box .profile-edit .profile-links .title,
+.custom-branded-domains .box .profile-edit .profile-other-settings .title,
+.custom-branded-domains .box .profile-edit .profile-billing .title,
+.custom-branded-domains .box .profile-edit .profile-delete .title {
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
+    padding: 0rem 1rem;
+}
+
+.btn-link-management {
+    color: #1B5AFF;
+    padding: 0.2rem 1rem;
+}
+
+.btn-link-management:hover {
+    background: var(--col_main);
+    color: var(--col_white);
+    border-radius: 0.8rem;
+}
+
+.drawer-API-key .text-API-key {
+    font-size: 1.6rem;
+}
+
+.drawer-API-key .btn-generate {
+    background: linear-gradient(235deg, var(--col_main), var(--col_main_2));
+    padding: 1.4rem 0rem;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    border-radius: 0.8rem;
+    margin: 1.4rem 0rem;
+}
+
+.drawer-API-key a {
+    color: #1B5AFF;
+    font-size: 1.6rem;
+}
+
+.drawer-email .title-email {
+    padding: 0 0 0.5rem 0;
+    font-size: 1.6rem;
+}
+
+.drawer-email input {
+    padding: 0rem 2.5rem;
+    height: 5rem;
+    margin-bottom: 1.6rem;
+}
+
+.drawer-email .btn-save {
+    cursor: pointer;
+    border-radius: 0.8rem;
+    color: #fff;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(235deg, var(--col_main), var(--col_main_2));
+}
+
+.drawer-password .title-password {
+    font-size: 1.6rem;
+    margin-bottom: 1.4rem;
+}
+
+.drawer-password input {
+    padding: 0rem 1.6rem;
+    height: 5rem;
+    margin-bottom: 1.4rem;
+}
+
+.drawer-password .btn-save {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(235deg, var(--col_main), var(--col_main_2));
+    height: 5rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    border-radius: 0.8rem;
+}
+
+.drawer-change-links .title-change-links {
+    padding: 0 0 0.5rem 0;
+    font-size: 1.6rem;
+}
+
+.drawer-change-links .ant-input-number-input {
+    height: 5rem;
+}
+
+.drawer-change-links .ant-input-number {
+    width: 100%;
+}
+
+.drawer-change-links .btn-save {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(235deg, var(--col_main), var(--col_main_2));
+    height: 5rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    margin-top: 1.4rem;
+}
+
+.drawer-global .switch-text {
+    display: flex;
+    margin-top: 1.6rem;
+    padding: 1rem;
+    background: var(--col_main_light);
+    border-radius: 0.8rem;
+}
+
+.drawer-global .switch-text .text {
+    margin-left: 1rem;
+}
+
+.drawer-global .btn-save {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    color: #fff;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(235deg, var(--col_main), var(--col_main_2));
+}
+
+.drawer-setting p { 
+    font-size: 1.6rem;
+    margin-top: 1rem;
+}
+
+.drawer-setting .btn-purchase {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    color: #fff;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(235deg, var(--col_main), var(--col_main_2));
+}

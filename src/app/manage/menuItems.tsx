@@ -68,7 +68,7 @@ export const menuItems: MenuItem[] = [
           {
             key: "custom-branded-domains",
             icon: <Globe className="icon-menuItem" />,
-            label: <Link href="/custom" className="a-menuItem">Custom Branded Domains</Link>,
+            label: <Link href="/manage/link-management/custom-branded-domains" className="a-menuItem">Custom Branded Domains</Link>,
             roles: ["admin", "user"],
           },
           {
