@@ -116,6 +116,8 @@
 .dashboard .box .left .btn-favourites:hover,
 .dashboard .box .left .btn-selected-url:hover {
     box-shadow: 0 8px 16px 0 rgb(0 0 0 / .2);
+    background: var(--col_green);
+    color: white !important;
 }
 
 .dashboard .box .left .input {

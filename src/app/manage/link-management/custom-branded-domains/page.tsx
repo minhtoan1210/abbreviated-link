@@ -60,7 +60,7 @@ export default function page() {
             <div className="title">nguyenvuminhtoan1999@gmail.com</div>
             <ChangeEmailAddress />
             <br />
-            <Link href="#" className="login-registry btn-link-management">
+            <Link href="/manage/account/login-log" className="login-registry btn-link-management">
               Login Registry
             </Link>
           </div>
@@ -69,7 +69,7 @@ export default function page() {
             <ChangePassword />
             <br />
             <Link
-              href="#"
+              href="/manage/account/pass-registry"
               className="change-password-registry btn-link-management"
             >
               change password Registry
@@ -79,7 +79,7 @@ export default function page() {
             <div className="title">
               Security (Two-Factor Authentication | 2FA)
             </div>
-            <Link href="#" className="btn-link-management">
+            <Link href="/manage/OTP-set" className="btn-link-management">
               manage 2FA | disabled
             </Link>
           </div>
@@ -89,7 +89,7 @@ export default function page() {
           </div>
           <div className="profile-other-settings">
             <div className="title">Other settings</div>
-            <Link href="#" className="btn-link-management">
+            <Link href="/manage/edit/globalQR" className="btn-link-management">
               QR Codes settings
             </Link>
             <br />
@@ -99,7 +99,7 @@ export default function page() {
           </div>
           <div className="profile-billing">
             <div className="title">Billing</div>
-            <Link href="#" className="btn-link-management">Invoices</Link>
+            <Link href="/manage/billing/invoices" className="btn-link-management">Invoices</Link>
             <br />
             <Link href="#" className="btn-link-management">Certificate of Residence - 2025</Link>
             <br />
@@ -107,11 +107,11 @@ export default function page() {
             <br />
             <Link href="#" className="btn-link-management">Certificate of Residence - 2023</Link>
             <br />
-            <Link href="#" className="btn-link-management">Your subscription Registry</Link>
+            <Link href="/manage/account/registry" className="btn-link-management">Your subscription Registry</Link>
           </div>
           <div className="profile-delete">
             <div className="title">Delete your account</div>
-            <Link href="#" className="btn-link-management">Delete your account</Link>
+            <Link href="/manage/account/delete" className="btn-link-management">Delete your account</Link>
           </div>
         </div>
       </div>

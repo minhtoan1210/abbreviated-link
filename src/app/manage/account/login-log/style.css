@@ -1,0 +1,61 @@
+.loginLog {
+    width: 89rem;
+    margin: auto;
+    background-color: rgba(255, 255, 255, .85);
+    border: 0.1rem solid rgba(0, 0, 0, .1);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .1);
+    border-radius: 0.4rem;
+    font-size: 1.4rem;
+}
+
+.loginLog .title {
+    color: var(--col_dark);
+    font-weight: 500;
+    font-size: 1.8rem;
+    padding: 0.8rem 0.8rem;
+    background-color: var(--col_grey_light);
+    border-bottom: 1px solid var(--col_grey);
+}
+
+.loginLog .table .row {
+    display: grid;
+    grid-template-columns: 17rem auto 13rem;
+}
+
+.loginLog .table .row.thead {
+    color: #838896;
+}
+
+.loginLog .table {
+    width: 100%;
+    padding: 1rem 1.2rem;
+}
+
+.loginLog .table .row {
+    padding: 1.6rem 0rem;
+    border-bottom: 0.1rem solid var(--col_grey);
+}
+
+.loginLog .table .row:nth-last-child(1) { 
+    border-bottom: 0rem solid var(--col_grey);
+}
+
+.loginLog .table .row .col_date,
+.loginLog .table .row .col_ip,
+.loginLog .table .row .col_country {
+    padding: 0rem 1.4rem;
+}
+
+.loginLog .table .row.thead .col_ip {
+    border-left: 0rem solid var(--col_grey);
+    border-right: 0rem solid var(--col_grey);
+}
+
+.loginLog .table .row .col_ip {
+    border-left: 0.1rem solid var(--col_grey);
+    border-right: 0.1rem solid var(--col_grey);
+}
+
+.loginLog .table .row .col_country {
+    text-align: right;
+}

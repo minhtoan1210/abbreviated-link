@@ -1,0 +1,89 @@
+.OTP-set {
+    width: 80rem;
+    margin: auto;
+    background: #fff;
+    padding: 2rem 5rem 2.5rem 5rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 0.1rem 1.2rem #f2f3f4;
+}
+
+.OTP-set .title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--col_txt);
+    margin-bottom: 2.5rem;
+}
+
+.OTP-set .description {
+    color: var(--col_txt);
+    line-height: 1.6;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.OTP-set .none,
+.OTP-set .e-mail,
+.OTP-set .authenticator-app {
+    display: flex;
+    border: 1px solid var(--col_grey);
+    padding: 0.6rem 1rem;
+    border-radius: 5rem;
+    margin-right: 1.4rem;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.6rem 2rem;
+}
+
+.OTP-set .btn-otp {
+    display: flex;
+    margin-bottom: 1.4rem;
+}
+
+.OTP-set .none svg,
+.OTP-set .e-mail svg,
+.OTP-set .authenticator-app svg {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 0.6rem;
+}
+
+.classNone,
+.classEmail,
+.classAuthenticator-app {
+    border: 1px solid var(--col_main);
+    color: var(--col_white);
+    padding: 0 25px 0 45px;
+    background: var(--col_main);
+}
+
+.OTP-set .input-password {
+    height: 5rem;
+    width: 24rem;
+    margin-bottom: 1.4rem;
+}
+
+.OTP-set .btn-save {
+    padding: 0 2.5rem;
+    height: 5rem;
+    line-height: 5rem;
+    width: 100%;
+    font-weight: 700;
+    color: var(--col_white);
+    background: linear-gradient(235deg, var(--col_main), var(--col_main_2));
+    font-size: 1.6rem;
+    text-align: center;
+    border-radius: 0.8rem;
+}
+
+.OTP-set .none svg,
+.OTP-set .e-mail svg,
+.OTP-set .authenticator-app svg {
+    display: none;
+}
+
+
+.OTP-set .classNone svg,
+.OTP-set .classEmail svg,
+.OTP-set .classAuthenticator-app svg { 
+    display: block;
+}

@@ -1,0 +1,66 @@
+.registry {
+    width: 80rem;
+    margin: auto;
+    background: #fff;
+    box-shadow: 0 0.1rem 1.2rem #f2f3f4;
+    border: 0.1rem solid rgba(0, 0, 0, .1);
+    border-radius: 0.6rem;
+}
+
+.registry .title {
+    background-color: var(--col_grey_light);
+    border-bottom: 0.1rem solid var(--col_grey);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 1.2rem;
+}
+
+.registry .title>span {
+    color: var(--col_dark);
+    font-weight: 500;
+    text-indent: inherit;
+    line-height: initial;
+    height: auto;
+    padding-left: 0;
+    background: none;
+    font-size: 1.8rem;
+    width: auto;
+    padding: 1rem 0;
+}
+
+.registry .title .account {
+    text-align: right;
+}
+
+.registry .title .account span:nth-child(1),
+.registry .title .account span:nth-child(2) { 
+    display: block;
+    font-size: 1.4rem;
+    color: #838383;
+}
+
+.registry .table {
+    width: 100%;
+    padding: 1.2rem;
+}
+
+.registry .table .row{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 17rem auto 13rem;
+}
+
+.registry .table .row {
+    padding: 1.4rem 0rem;
+ }
+
+ .registry .table .thead .col-data,
+ .registry .table .thead .col-description,
+ .registry .table .thead .col-amount { 
+    color: #838383;
+ }
+
+ .registry .table .thead .col-amount {  
+    text-align: right;
+ }

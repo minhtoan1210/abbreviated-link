@@ -86,7 +86,7 @@
 
 .discover-url .discover-url-addtag .btn-icon div:hover {
     background: var(--col_accent_light);
-    color: var(--col_accent) ;
+    color: var(--col_accent);
     border-radius: 50%;
     padding: 0.5rem 0rem;
 }
@@ -176,4 +176,50 @@
     border: 1px solid var(--col_green);
     pointer-events: auto !important;
     cursor: pointer;
+}
+
+.drawer-link-in-bio p {
+    font-size: 1.6rem;
+}
+
+.drawer-link-in-bio .text-create {
+    margin-top: 2.4rem;
+}
+
+.drawer-link-in-bio .text-create span {
+    font-size: 1.6rem;
+    color: #0e1527;
+}
+
+.drawer-link-in-bio .text-create .btn-youralias {
+    background: linear-gradient(235deg, var(--col_main), var(--col_main_2));
+    height: 5rem;
+    font-weight: 700;
+    color: var(--col_white);
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.drawer-link-in-bio .text-sub {
+    font-size: 1.6rem;
+    color: #0e1527;
+    margin: 1rem 0rem;
+}
+
+.drawer-link-in-bio .text-your-domain,
+.drawer-link-in-bio .text-your-alias {
+    background: linear-gradient(235deg, var(--col_main), var(--col_main_2));
+    height: 5rem;
+    font-weight: 700;
+    color: var(--col_white);
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.4rem;
 }

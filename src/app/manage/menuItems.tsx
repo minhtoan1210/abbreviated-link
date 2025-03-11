@@ -44,7 +44,7 @@ export const menuItems: MenuItem[] = [
       {
         key: "dashboard",
         icon: <DashboardOutlined className="icon-menuItem" />,
-        label: <Link href="/dashboard" className="a-menuItem">Dashboard</Link>,
+        label: <Link href="/manage/dashboard" className="a-menuItem">Dashboard</Link>,
         roles: ["admin", "user"],
       },
       {
@@ -56,7 +56,7 @@ export const menuItems: MenuItem[] = [
           {
             key: "link-management-dashboard",
             icon: <DashboardOutlined className="icon-menuItem" />,
-            label: <Link href="/dashboard" className="a-menuItem">Dashboard</Link>,
+            label: <Link href="/manage/dashboard" className="a-menuItem">Dashboard</Link>,
             roles: ["admin", "user"],
           },
           {
@@ -74,7 +74,7 @@ export const menuItems: MenuItem[] = [
           {
             key: "favourites",
             icon: <Star className="icon-menuItem" />,
-            label: <Link href="/Favourites" className="a-menuItem">Favourites</Link>,
+            label: <Link href="/manage/link-management/favourites" className="a-menuItem">Favourites</Link>,
             roles: ["admin", "user"],
           },
           {

@@ -1,5 +1,5 @@
 "use client";
-import { Input, Button } from "antd";
+import { Input, Button, Drawer } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useEffect, useRef, useState } from "react";
 import { useCreateLinkMutation, useLinkList } from "@/queries/useLink";
@@ -26,6 +26,15 @@ export default function Checkboxes() {
   const [isCheck, setIsCheck] = useState(false);
   const { mutateAsync, isPending } = useCreateLinkMutation();
   const { data: linkList, refetch } = useLinkList(pagination);
+  const [open, setOpen] = useState(false);
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     refetch();
@@ -59,9 +68,27 @@ export default function Checkboxes() {
           </div>
           <div
             className={isCheck ? "active btn-create-link" : "btn-create-link"}
+            onClick={showDrawer}
           >
             Create Link-in-Bio
           </div>
+          <Drawer title="Link-in-Bio" onClose={onClose} open={open} className="drawer-link-in-bio">
+            <p>
+              Create your own Link-in-Bio microsite for selected short links.
+              You will be able to edit it later in the Link-in-Bio section, you
+              will also be able to add more short links to it, image, youtube /
+              vimeo video, edit its appearance and much more.
+            </p>
+            <div className="text-create">
+              <span>Create:</span>
+              <div className="btn-youralias">cutt.ly/bio/your-alias</div>
+            </div>
+            <div className="text-sub">
+              Tu use following features you need active subscription plan:
+            </div>
+            <div className="text-your-domain">your-domain/bio/your-alias</div>
+            <div className="text-your-alias">cutt.bio/your-alias</div>
+          </Drawer>
           <div className={isCheck ? "active btn-urls" : "btn-urls"}>
             Hide selected URLs
           </div>

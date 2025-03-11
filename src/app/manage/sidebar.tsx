@@ -63,7 +63,7 @@ export default function Sidebar({
           }}
         >
           <img
-            src="../cuttly.svg"
+            src="/images/cuttly.svg"
             alt=""
             style={{ filter: "brightness(0.5)" }}
           />

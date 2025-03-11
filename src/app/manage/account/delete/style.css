@@ -1,0 +1,51 @@
+.delete {
+    width: 80rem;
+    background: white;
+    margin: auto;
+    padding: 2rem;
+}
+
+.delete .title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--col_txt);
+    margin-bottom: 1rem;
+}
+
+.delete .text-sub {
+    font-size: 1.8rem;
+    color: var(--col_main);
+    font-weight: 500;
+    margin-bottom: 2.4rem;
+}
+
+.delete .text-sub p {
+    font-size: 1.6rem;
+}
+
+.delete .switch {
+    display: flex;
+    align-items: end;
+}
+
+.delete .switch button {
+    margin-top: 1.4rem;
+    margin-right: 1.2rem;
+}
+
+.delete .btn-delete { 
+    font-weight: 500;
+    display: block;
+    padding: 1.5rem 1.2rem;
+    border: 0.1rem solid var(--col_main);
+    border-radius: 5rem;
+    margin-top: 1rem;
+    width: 16rem;
+    color: #c2c2c2;
+}
+
+.delete .btn-delete.active { 
+    color: #000;
+    background: #f0f0f0;
+    cursor: pointer;
+} 

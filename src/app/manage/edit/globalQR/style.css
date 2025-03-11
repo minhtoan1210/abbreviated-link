@@ -1,0 +1,81 @@
+.globalqr {
+    width: 80rem;
+    margin: auto;
+    background: #fff;
+    padding: 2rem 5rem 2.5rem 5rem;
+    border-radius: 0.8rem;
+    margin: 1.5rem auto;
+    box-shadow: 0 0.1rem 1.2rem #f2f3f4;
+}
+
+.globalqr .title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--col_txt);
+    margin-bottom: 1rem;
+}
+
+.globalqr .text-sub {
+    font-size: 1.8rem;
+    color: var(--col_main);
+    font-weight: 500;
+    margin-top: 0;
+    padding-bottom: 2rem;
+    border-bottom: 0.1rem solid #c2c2c2;
+}
+
+.globalqr .qr-globalqr,
+.globalqr .qr-globalqr svg {
+    width: 25.6rem !important;
+    height: 25.6rem !important;
+    margin-top: 1.4rem;
+}
+
+.globalqr .customizable {
+    text-align: left;
+    background: var(--col_grey_light);
+    width: 100%;
+    border-radius: 1.2rem;
+    display: flex;
+    padding: 0 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+.globalqr .customizable .text span:nth-child(1) {
+    display: block;
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
+    color: #838896;
+}
+
+.globalqr .customizable .text span:nth-child(2) {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--col_main);
+}
+
+.globalqr .customizable .btn-upgrade {
+    border-radius: 0.6rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(45deg, var(--col_main) 0%, var(--col_main_2) 100%);
+}
+
+.globalqr .customizable .btn-upgrade img {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 0.6rem;
+}
+
+.globalqr .customizable .btn-upgrade:hover img { 
+    transform: scale(1.2);
+}
+
+.globalqr .customizable .btn-upgrade:hover { 
+    color: white;
+}
