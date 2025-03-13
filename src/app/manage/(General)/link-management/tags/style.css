@@ -1,0 +1,52 @@
+.tags .title {
+    background: transparent;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem !important;
+    margin-top: 0 !important;
+    color: var(--col_dark);
+    font-weight: 500;
+    border-radius: 4px;
+    font-size: 1.6rem;
+    text-align: left;
+    letter-spacing: 0.1rem;
+}
+
+.tags .item {
+    box-shadow: 0 0.1rem 1.2rem var(--col_main_light);
+    padding: 1.2rem;
+    margin: 1.4rem auto;
+    position: relative;
+    width: 100%;
+    background: var(--col_white);
+    border-radius: 0.8rem;
+}
+
+.tags .item .item-tag {
+    background: transparent;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    color: var(--col_dark);
+    font-weight: 500;
+    border-radius: 0.4rem;
+    font-size: 1.6rem;
+    text-align: left;
+    letter-spacing: 0.1rem;
+    background: var(--col_grey);
+    color: var(--col_white);
+}
+
+.tags .item .item-text { 
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+    color: #0E1527;
+    font-size: 1.6rem;
+}
+
+.tags .item .item-shorten { 
+    color: #1B5AFF;
+    font-size: 1.6rem;
+    margin-top: 1.6rem;
+}

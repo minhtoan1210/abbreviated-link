@@ -1,0 +1,66 @@
+.hidden-urls .title {
+    background: transparent;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    color: var(--col_dark);
+    font-weight: 500;
+    border-radius: 4px;
+    font-size: 1.6rem;
+    text-align: left;
+    letter-spacing: 0.1rem;
+}
+
+.hidden-urls .box {
+    display: flex;
+}
+
+.hidden-urls .box .left .content {
+    background: var(--col_white);
+    border: 0.1rem solid var(--col_white);
+    border-radius: 0.8rem;
+    padding: 1.5rem;
+    width: 34rem;
+}
+
+.hidden-urls .box .left .content p { 
+    color: #c2c2c2;
+}
+
+.hidden-urls .box .left .btn-remove {
+    box-shadow: 0 1px 12px var(--col_main_light);
+    height: 5.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #b7b7b7;
+    margin-top: 1.6rem;
+    border-radius: .8rem;
+    justify-content: flex-start;
+    padding-left: 2rem;
+    font-size: 1.6rem;
+    pointer-events: none;
+}
+
+.hidden-urls .box .left .btn-remove:hover { 
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / .2);
+}
+
+.hidden-urls .box .left .btn-start-url { 
+    color: var(--col_txt);
+    border: 1px solid var(--col_green);
+    height: 5rem;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 1.5rem;
+    margin-top: 1.6rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
+}
+
+.hidden-urls .box .right { 
+    width: 100%;
+    margin-left: 2rem;
+}
+

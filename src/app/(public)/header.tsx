@@ -18,7 +18,7 @@ export default function Header() {
         <div className="container">
           <div className="header">
             <div className="header-logo">
-              <img src="./cuttly.svg" alt="" />
+              <img src="/images/cuttly.svg" alt="" />
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" className="border-[0]">

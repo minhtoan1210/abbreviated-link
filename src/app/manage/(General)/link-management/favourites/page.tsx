@@ -20,19 +20,21 @@ export default function page() {
   return (
     <div className="favourites">
       <div className="title">Favourites URLs</div>
-      <div className="favourites-left">
-        <p>
-          To do any of the following, first select short links using the
-          checkboxes.
-        </p>
-        <div className="btn-favourites">
-          <div className="btn-remove">remove from favourites</div>
-          <div className="btn-start-url">Start - URL Shortener</div>
+      <div className="box">
+        <div className="left">
+          <div className="content">
+            <p>
+              To do any of the following, first select short links using the
+              checkboxes.
+            </p>
+            <div className="btn-remove">remove from favourites</div>
+            <div className="btn-start-url">Start - URL Shortener</div>
+          </div>
         </div>
-      </div>
-      <div className="favourites-right">
-        <div className="box">
-          <CardCuttlyShortLink itemLink={item} />
+        <div className="right">
+          <div className="box">
+            <CardCuttlyShortLink itemLink={item} />
+          </div>
         </div>
       </div>
     </div>

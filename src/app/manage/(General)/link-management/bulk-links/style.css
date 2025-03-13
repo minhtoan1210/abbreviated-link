@@ -1,0 +1,71 @@
+.bulk-links .title {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    color: var(--col_dark);
+    font-weight: 500;
+    font-size: 1.6rem;
+    letter-spacing: 0.1rem;
+}
+
+.bulk-links .item {
+    box-shadow: 0 1px 12px var(--col_main_light);
+    background: var(--col_white);
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+}
+
+.bulk-links .item .item-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bulk-links .item .item-link .link {
+    color: var(--col_accent);
+    font-size: 1.6rem;
+}
+
+.bulk-links .item .item-link .item-date {
+    color: var(--col_grey);
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.6rem;
+    font-size: 1.4rem;
+    max-width: 100px;
+    border: 0.1rem solid var(--col_grey);
+}
+
+.bulk-links .item .item-text {
+    color: var(--col_txt);
+    padding: 0.6rem 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+    font-size: 1.6rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 0.1rem solid var(--col_grey_light);
+}
+
+.bulk-links .item .item-text span {
+    font-weight: 700;
+}
+
+.bulk-links .item .item-btn {
+    display: flex;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.bulk-links .item .item-btn svg {
+    color: var(--col_accent);
+    margin: 1rem;
+}
+
+.ant-tooltip-inner {
+    color: #000 !important;
+    background-color: #fff !important;
+}
+
+.ant-tooltip-arrow::before {
+    background-color: white !important;
+}

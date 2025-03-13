@@ -1,0 +1,36 @@
+.your-teams {
+    margin: auto;
+    width: 70rem;
+    background: #fff;
+    padding: 2rem 5rem 2.5rem 5rem;
+    border-radius: 0.8rem;
+    margin: 1.4rem auto;
+    box-shadow: 0 0.1rem 1.2rem #f2f3f4;
+}
+
+.your-teams .title { 
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--col_txt);
+}
+
+.your-teams .text-sub { 
+    color: var(--col_main);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.your-teams .btn-create { 
+    width: 30rem;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 3rem auto;
+}
+
+.your-teams .btn-create span { 
+    text-align: center;
+} 
+
+.your-teams .btn-create:hover { 
+    color: white;
+} 

@@ -72,7 +72,9 @@
 
 }
 
-.p-1,.py-1\.5, .px-2 {
+.p-1,
+.py-1\.5,
+.px-2 {
   padding: 0;
 }
 
@@ -80,7 +82,7 @@
   background: var(--col_green) !important;
 }
 
-.btn { 
+.btn {
   padding: 1rem 1.6rem;
   border-radius: 0.8rem;
   display: flex;
@@ -89,14 +91,14 @@
   background: linear-gradient(45deg, var(--col_main) 0%, var(--col_main_2) 100%);
 }
 
-.btn img { 
+.btn img {
   width: 3rem;
   height: 3rem;
   margin-right: 1rem;
   transition: 0.3s;
-} 
+}
 
-.btn a { 
+.btn a {
   color: var(--col_white);
   font-weight: 700;
   font-size: 1.6rem;

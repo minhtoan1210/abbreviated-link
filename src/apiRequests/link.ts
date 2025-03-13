@@ -15,4 +15,4 @@ const linkApiRequest = {
     http.patch(`/link/${id}`, body),
 };
 
-export default linkApiRequest;
+export default linkApiRequest; 

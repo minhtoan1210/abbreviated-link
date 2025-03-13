@@ -24,7 +24,6 @@ import {
 import { Drawer, Space, Switch, Tooltip } from "antd";
 import { CheckOutlined } from "@ant-design/icons";
 import "./style.css";
-import { ListLinkhType } from "@/app/manage/dashboard/component/checkboxes";
 import dayjs from "dayjs";
 import { DDMMYY } from "@/constants/type";
 import {
@@ -34,7 +33,8 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import ComponentQrCode from "../../(btnIcon)/qr-code/page";
+import { ListLinkhType } from "./checkboxes";
+import ComponentQrCode from "@/app/manage/(btnIcon)/qr-code/page";
 
 export default function CardCuttlyShortLink({
   itemLink,

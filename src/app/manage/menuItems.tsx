@@ -80,25 +80,25 @@ export const menuItems: MenuItem[] = [
           {
             key: "hidden-urls",
             icon: <EyeOff className="icon-menuItem" />,
-            label: <Link href="/Hidden" className="a-menuItem">Hidden URLs</Link>,
+            label: <Link href="/manage/link-management/hidden-urls" className="a-menuItem">Hidden URLs</Link>,
             roles: ["admin", "user"],
           },
           {
             key: "api-urls",
             icon: <Braces className="icon-menuItem" />,
-            label: <Link href="/API" className="a-menuItem">API URLs</Link>,
+            label: <Link href="/manage/link-management/api-urls" className="a-menuItem">API URLs</Link>,
             roles: ["admin", "user"],
           },
           {
             key: "tags",
             icon: <Tags className="icon-menuItem" />,
-            label: <Link href="/Tags" className="a-menuItem">Tags</Link>,
+            label: <Link href="/manage/link-management/tags" className="a-menuItem">Tags</Link>,
             roles: ["admin", "user"],
           },
           {
             key: "bulk-links",
             icon: <NotebookText className="icon-menuItem" />,
-            label: <Link href="/bulk" className="a-menuItem">bulk links</Link>,
+            label: <Link href="/manage/link-management/bulk-links" className="a-menuItem">bulk links</Link>,
             roles: ["admin", "user"],
           },
           {
@@ -118,7 +118,7 @@ export const menuItems: MenuItem[] = [
       {
         key: "limits-volume",
         icon: <AlignJustify className="icon-menuItem" />,
-        label: <Link href="/limits" className="a-menuItem">Limits / volume</Link>,
+        label: <Link href="/manage/limits" className="a-menuItem">Limits / volume</Link>,
         roles: ["admin", "user"],
       },
     ],
@@ -131,7 +131,7 @@ export const menuItems: MenuItem[] = [
       {
         key: "your-teams",
         icon: <TeamOutlined className="icon-menuItem" />,
-        label: <Link href="/Your" className="a-menuItem">Your teams</Link>,
+        label: <Link href="/manage/your-teams" className="a-menuItem">Your teams</Link>,
         roles: ["admin", "user"],
       },
       {

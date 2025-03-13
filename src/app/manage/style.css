@@ -97,14 +97,11 @@
 
 .ant-tooltip-inner {
     background-color: white !important;
-    /* Màu nền */
     color: #ffffff !important;
-    /* Màu chữ */
 }
 
 .ant-tooltip-arrow::before {
     background-color: black !important;
-    /* Màu nền mũi tên */
 }
 
 .discover-url .discover-url-addtag .ad_ads {
