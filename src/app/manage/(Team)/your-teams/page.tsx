@@ -7,7 +7,7 @@ export default function page() {
     <div className="your-teams">
       <div className="title">Your teams</div>
       <div className="text-sub">No teams</div>
-      <Link href="#" className="btn-create btn">
+      <Link href="/manage/create-new-team" className="btn-create btn">
         <img src="/images/link_bg.svg" alt="" />
         <span>Create new team</span>
       </Link>

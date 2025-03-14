@@ -11,6 +11,7 @@ import type { MenuProps } from "antd";
 import {
   AlignJustify,
   Braces,
+  Building,
   ChartNoAxesColumn,
   CircleAlert,
   CircleHelp,
@@ -21,7 +22,6 @@ import {
   Globe,
   Inbox,
   Layers,
-  Layers2,
   LogOut,
   NotebookText,
   SearchCheck,
@@ -137,9 +137,23 @@ export const menuItems: MenuItem[] = [
       {
         key: "create-new-team",
         icon: <FilePlus className="icon-menuItem" />,
-        label: <Link href="/Create" className="a-menuItem">Create new team</Link>,
+        label: <Link href="/manage/create-new-team" className="a-menuItem">Create new team</Link>,
         roles: ["admin", "user"],
       },
+    ],
+  },
+  {
+    key: "Organization",
+    label: "Organization",
+    type: "group",
+    children: [
+      {
+        key: "Organization",
+        icon:  <Building  className="icon-menuItem" />,
+        label: <Link href="/manage/organization" className="a-menuItem">Organization</Link>,
+        roles: ["admin", "user"],
+      },
+     
     ],
   },
   {

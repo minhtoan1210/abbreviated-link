@@ -13,4 +13,5 @@ export const LinkhRes = z.object({
   
 
 export type LinkResType = z.TypeOf<typeof LinkhRes>;
+
 export type CreateLinkBodyType = z.TypeOf<typeof LinkhRes>;

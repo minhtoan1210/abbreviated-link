@@ -7,10 +7,10 @@ export const useLinkList = (param: {
   limit: string | number;
 }) => {
   return useQuery({
-    queryKey: ["links", param],
+    queryKey: ["links", param.page, param.limit],
     queryFn: async () => {
       const res = await linkApiRequest.listLink(param);
-      return res?.data?.data || [];
+      return res?.data || [];
     },
   });
 };

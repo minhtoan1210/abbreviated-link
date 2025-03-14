@@ -11,8 +11,8 @@ export default function page() {
           <div className="col_ip">IP</div>
           <div className="col_country">Country</div>
         </div>
-        {[...Array(5)].map(() => (
-          <div className="row">
+        {[...Array(5)].map((_, key) => (
+          <div className="row" key={key}>
             <div className="col_date">2025-03-11 01:54:45</div>
             <div className="col_ip">2a09:bac5:d46c:25d7::3c5:d</div>
             <div className="col_country">Vietnam</div>

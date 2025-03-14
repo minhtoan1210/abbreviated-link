@@ -404,7 +404,7 @@ export default function Home() {
             <div>
               See it in action <MoveDown />
             </div>
-            <img src="./cuttbioURL-Shortener.webp" alt="" />
+            <img src="/images/cuttbioURL-Shortener.webp" alt="" />
           </div>
         </div>
       </div>
@@ -490,8 +490,8 @@ export default function Home() {
             <span>Pay yearly - save one month</span>
           </div>
           <div className="pricing-money">
-            {[1, 2, 3, 6, 5].map(() => (
-              <div className="item">
+            {[1, 2, 3, 6, 5].map((item,index) => (
+              <div className="item" key={index}>
                 <div className="item-header">
                   <div className="item-title">Free</div>
                   <div className="item-money">
@@ -503,8 +503,8 @@ export default function Home() {
                   <span className="title">Short links</span>{" "}
                   <span className="title">30/month</span>
                 </div>
-                {[...Array(10)].map(() => (
-                  <div className="detail">
+                {[...Array(10)].map((x, y) => (
+                  <div className="detail" key={y}>
                     <span>Link clicks</span> <span>Unlimited</span>
                   </div>
                 ))}

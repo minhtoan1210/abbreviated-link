@@ -1,3 +1,7 @@
+.dashboard {
+    background: rgb(245,245,245);
+}
+
 .overview {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -78,13 +82,16 @@
     grid-column-gap: 1.6rem;
 }
 
+.dashboard .box .left .search { 
+    background: var(--col_white);
+    padding: 1.5rem 1.5rem 1.5rem;
+}
+
 .dashboard .box .left {
     border: 1px solid var(--col_white);
     border-radius: 0.8rem;
-    padding: 1.5rem 1.5rem 1.5rem;
     display: table;
     width: 100%;
-    background: var(--col_white);
 }
 
 .dashboard .box .left .title {
