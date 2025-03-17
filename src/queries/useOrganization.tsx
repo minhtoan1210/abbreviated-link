@@ -12,14 +12,22 @@ export const useCreateOrganizationMutation = () => {
 };
 
 export const useUpdateOrganizationMutation = () => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: organizationApiRequest.updateOrganization,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["get-list-organization"] });
+    },
   });
 };
 
 export const useDeleteOrganizationMutation = () => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: organizationApiRequest.deleteOrganization,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["get-list-organization"] });
+    },
   });
 };
 
@@ -36,13 +44,14 @@ export const useGetListOrganization = (param?: {
   });
 };
 
-export const useGetIdOrganization = (id: string) => {
-    return useQuery({
-      queryKey: ["get-id-organization"],
-      queryFn: async () => {
-        const res = await organizationApiRequest.getIdOrganization(id);
-        return res?.data || [];
-      },
-    });
-  };
-  
+export const useGetIdOrganization = (id?: string) => {
+  return useQuery({
+    queryKey: ["get-id-organization", id],
+    queryFn: async () => {
+      if (!id) return null;
+      const res = await organizationApiRequest.getIdOrganization(id);
+      return res?.data || [];
+    },
+    enabled: !!id,
+  });
+};

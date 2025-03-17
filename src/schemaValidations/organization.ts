@@ -10,7 +10,7 @@ export const getListOrganizationRes = z.object({
     }),
     email: z.string(),
     name: z.string(),
-    owner: z.string(),
+    phone_number: z.string(),
     updatedAt: z.string(),
     __v: z.number(),
     _id: z.string(),
@@ -24,7 +24,7 @@ export const CreateOrganizationBody = z.object({
     district: z.string(),
     street: z.string(),
   }),
-  phone: z.string(),
+  phone_number: z.string(),
   email: z.string(),
   name: z.string(),
 });

@@ -13,3 +13,10 @@ export const useLogoutMutation = () => {
     mutationFn: authApiRequest.logout
   })
 }
+
+export const useRegisterMutation = () => {
+  return useMutation({
+    mutationFn: authApiRequest.register
+  })
+}
+

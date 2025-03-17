@@ -3,6 +3,7 @@ import {
   LoginBodyType,
   LoginResType,
   RefreshTokenResType,
+  RegisterResResType,
 } from "@/schemaValidations/auth.schema";
 
 const authApiRequest = {
@@ -16,6 +17,8 @@ const authApiRequest = {
   sLogout: (body: any) => http.delete("/auth/logout", body),
 
   login: (body: LoginBodyType) => http.post<LoginResType>("/auth/login", body),
+
+  register: (body: RegisterResResType) => http.post<any>("/user", body),
   
   auth: (body: {
     accessToken: string;

@@ -41,7 +41,7 @@ export default function Header() {
               <Link href="/login" className="btn-login f18-ls6">
                 Log in
               </Link>
-              <Link href="/" className="btn-signup f18-ls6">
+              <Link href="/register" className="btn-signup f18-ls6">
                 Sign up
               </Link>
               <DropdownMenu>

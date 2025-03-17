@@ -1,16 +1,22 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import "./style.css";
 import ComponentTable from "./table";
-import CreateForm from "./createForm";
+import OrganizationForm from "./formOrganization";
 
 export default function page() {
+  const [id, setId] = useState<{ type: string; id: string } | null>({
+    type: "",
+    id: "",
+  });
+
   return (
     <div className="organization">
       <div className="header-table">
         <div className="title">organization</div>
-        <CreateForm />
+        <OrganizationForm data={id} setId={setId}/>
       </div>
-      <ComponentTable />
+      <ComponentTable setId={setId} />
     </div>
   );
 }
