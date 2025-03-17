@@ -210,7 +210,7 @@
 
 @keyframes spinAndChangeBackground {
     0% {
-        background-image: url("../../../../../public/m_ico_m_c_1.svg");
+        background-image: url("/images/m_ico_m_c_1.svg");
         background-size: 64px;
         transform: translate(-50%, -50%) rotate(0deg) scale(0);
         background-color: #ffffff;
@@ -245,12 +245,12 @@
     52% {
         transform: translate(-50%, -50%) rotate(360deg) scale(0);
         background-color: #ffffff;
-        background-image: url("../../../../../public/m_ico_m_c_1.svg");
+        background-image: url("/images/m_ico_m_c_1.svg");
         background-size: 64px;
     }
 
     53% {
-        background-image: url("../../../../../public/ico_c_particles.svg");
+        background-image: url("/images/ico_c_particles.svg");
         background-size: 96px;
         background-color: #fff0;
         transform: translate(-50%, -50%) rotate(0deg) scale(0);
@@ -278,7 +278,7 @@
 
     100% {
         transform: translate(-50%, -50%) rotate(0deg) scale(0);
-        background-image: url("../../../../../public/ico_c_particles.svg");
+        background-image: url("/images/ico_c_particles.svg");
         background-size: 96px;
         background-color: #fff0;
     }

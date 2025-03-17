@@ -56,7 +56,7 @@ export default function Home() {
           <div className="box">
             <div className="item-box" id="box1">
               <div className="item-title">
-                <img src="./m_ico_m_c_1.svg" alt="" />
+                <img src="/images/m_ico_m_c_1.svg" alt="" />
                 <span>URL Shortener</span>
               </div>
               <div className="item-description">
@@ -87,7 +87,7 @@ export default function Home() {
             </div>
             <div className="item-box" id="box2">
               <div className="item-title">
-                <img src="./m_ico_m_c_2.svg" alt="" />
+                <img src="/images/m_ico_m_c_2.svg" alt="" />
                 <span>Link analytics</span>
               </div>
               <div className="item-description">
@@ -101,7 +101,7 @@ export default function Home() {
             </div>
             <div className="item-box" id="box3">
               <div className="item-title">
-                <img src="./m_ico_m_c_5.svg" alt="" />
+                <img src="/images/m_ico_m_c_5.svg" alt="" />
                 <span>Surveys</span>
               </div>
               <div className="item-description">
@@ -120,7 +120,7 @@ export default function Home() {
             </div>
             <div className="item-box" id="box4">
               <div className="item-title">
-                <img src="./m_ico_m_c_4.svg" alt="" />
+                <img src="/images/m_ico_m_c_4.svg" alt="" />
                 <span>QR Codes</span>
               </div>
               <div className="item-description">
@@ -138,7 +138,7 @@ export default function Home() {
             </div>
             <div className="item-box" id="box5">
               <div className="item-title">
-                <img src="./m_ico_m_c_3.svg" alt="" />
+                <img src="/images/m_ico_m_c_3.svg" alt="" />
                 <span>Link in bio</span>
               </div>
               <div className="item-description">
@@ -179,7 +179,7 @@ export default function Home() {
               <div className="text-date">2025-02-26</div>
             </div>
             <div className="discover-url-title">
-              <img src="./favicon-32x32.png" alt="" />
+              <img src="/images/favicon-32x32.png" alt="" />
               <span>
                 Cuttly | URL Shortener, Branded URLs, Link Management, API{" "}
               </span>
@@ -250,12 +250,12 @@ export default function Home() {
                 See it in action <MoveDown />
               </div>
               <div className="btn-seelink">
-                <img src="./link_bg.svg" alt="" />
+                <img src="/images/link_bg.svg" alt="" />
                 <span>See link analytics page</span>
               </div>
             </div>
             <div className="right">
-              <img src="./img_lm_2.png" alt="" />
+              <img src="/images/img_lm_2.png" alt="" />
             </div>
           </div>
         </div>
@@ -264,27 +264,27 @@ export default function Home() {
         <div className="cuttly-surveys">
           <div className="left">
             <div className="star1">
-              <img src="./star_1_a.svg" alt="" />
-              <img src="./star_1_a.svg" alt="" />
-              <img src="./star_1_a.svg" alt="" />
-              <img src="./star_1_a.svg" alt="" />
-              <img src="./star_1_a.svg" alt="" />
+              <img src="/images/star_1_a.svg" alt="" />
+              <img src="/images/star_1_a.svg" alt="" />
+              <img src="/images/star_1_a.svg" alt="" />
+              <img src="/images/star_1_a.svg" alt="" />
+              <img src="/images/star_1_a.svg" alt="" />
             </div>
 
             <div className="star2">
-              <img src="./star_2_a.svg" alt="" />
-              <img src="./star_2_a.svg" alt="" />
-              <img src="./star_2_a.svg" alt="" />
-              <img src="./star_2_a.svg" alt="" />
-              <img src="./star_2_a.svg" alt="" />
+              <img src="/images/star_2_a.svg" alt="" />
+              <img src="/images/star_2_a.svg" alt="" />
+              <img src="/images/star_2_a.svg" alt="" />
+              <img src="/images/star_2_a.svg" alt="" />
+              <img src="/images/star_2_a.svg" alt="" />
             </div>
 
             <div className="star3">
-              <img src="./star_3_a.svg" alt="" />
-              <img src="./star_3_a.svg" alt="" />
-              <img src="./star_3_a.svg" alt="" />
-              <img src="./star_3_a.svg" alt="" />
-              <img src="./star_3_a.svg" alt="" />
+              <img src="/images/star_3_a.svg" alt="" />
+              <img src="/images/star_3_a.svg" alt="" />
+              <img src="/images/star_3_a.svg" alt="" />
+              <img src="/images/star_3_a.svg" alt="" />
+              <img src="/images/star_3_a.svg" alt="" />
             </div>
           </div>
           <div className="right">
@@ -303,7 +303,7 @@ export default function Home() {
               See it in action <MoveDown />
             </div>
             <div className="btn-seelink">
-              <img src="./link_bg.svg" alt="" />
+              <img src="/images/link_bg.svg" alt="" />
               <span>See link analytics page</span>
             </div>
           </div>
@@ -322,7 +322,7 @@ export default function Home() {
               dedicated QR codes, and track clicks effortlessly.
             </div>
             <div className="btn-see">
-              <img src="./link_bg.svg" alt="" />
+              <img src="/images/link_bg.svg" alt="" />
               <span>See our Link in bio</span>
             </div>
             <div className="list_tick">
@@ -366,7 +366,7 @@ export default function Home() {
             <div className="phone">
               <div className="phone-big">
                 <div className="phone-screen">
-                  <img src="./link-in-bio_cuttly.jpg" alt="" />
+                  <img src="/images/link-in-bio_cuttly.jpg" alt="" />
                 </div>
                 <div className="phone-details-top">
                   <hr />
@@ -398,7 +398,7 @@ export default function Home() {
               codes by tweaking shapes, colors, and adding your logo. Increase
               engagement and track clicks with ease.
             </div>
-            <img src="./img_qr_1.png" alt="" />
+            <img src="/images/img_qr_1.png" alt="" />
           </div>
           <div className="right">
             <div>
@@ -433,16 +433,16 @@ export default function Home() {
               <span>https://2s.ms/HEADER/dynamicShortLinkID</span>
             </div>
             <Link href="/" className="text-see">
-              <img src="./link_bg.svg" alt="" />
+              <img src="/images/link_bg.svg" alt="" />
               <span>Custom Domains & Headers</span>
             </Link>
             <Link href="/" className="text-see">
-              <img src="./link_bg.svg" alt="" />
+              <img src="/images/link_bg.svg" alt="" />
               <span>Custom Domains & Headers</span>
             </Link>
           </div>
           <div className="right">
-            <img src="./img_tcus_02.png" alt="" />
+            <img src="/images/img_tcus_02.png" alt="" />
           </div>
         </div>
       </div>
@@ -455,7 +455,7 @@ export default function Home() {
           <div className="card">
             {[0, 1, 3].map((item, key) => (
               <div className="item" key={key}>
-                <img src="./top10-shorteners.png" alt="" />
+                <img src="/images/top10-shorteners.png" alt="" />
                 <div className="card-title">
                   Top 10 Best URL Shorteners in 2025
                 </div>
@@ -465,7 +465,7 @@ export default function Home() {
                   analyzing online campaigns. This article presents an updated
                 </div>
                 <Link href="/" className="item-btn-link">
-                  <img src="./link_bg.svg" alt="" />
+                  <img src="/images/link_bg.svg" alt="" />
                   <span>Explore Top 10 URL Shorteners</span>
                 </Link>
               </div>
@@ -509,7 +509,7 @@ export default function Home() {
                   </div>
                 ))}
                 <Link href="/">
-                  <img src="./link_bg.svg" alt="" />
+                  <img src="/images/link_bg.svg" alt="" />
                   <span>Sign up</span>
                 </Link>
               </div>
@@ -517,7 +517,7 @@ export default function Home() {
           </div>
           <div className="btn-link-cuttly">
             <Link href="/">
-              <img src="./link_bg.svg" alt="" />
+              <img src="/images/link_bg.svg" alt="" />
               <span>Cuttly Features</span>
             </Link>
           </div>
@@ -566,11 +566,11 @@ export default function Home() {
           <div className="right">
             <div className="btn-link">
               <Link href="/">
-                <img src="./link_bg.svg" alt="" />
+                <img src="/images/link_bg.svg" alt="" />
                 <span>Sign up</span>
               </Link>
               <Link href="/">
-                <img src="./link_bg.svg" alt="" />
+                <img src="/images/link_bg.svg" alt="" />
                 <span>Pricing</span>
               </Link>
             </div>
@@ -591,14 +591,14 @@ export default function Home() {
           <div className="consistently-listimg">
             {
               [...Array(6)].map((item,key) => (
-                <img src="./G2_medal_HP_Winter_2024.svg" alt="" key={key}/>
+                <img src="/images/G2_medal_HP_Winter_2024.svg" alt="" key={key}/>
               ))
             }
           </div>
           <div className="consistently-listimg2">
             {
               [...Array(3)].map((item,key) => (
-                <img src="./SaaSworthy_Most_Worthy_Url_Shorteners_Top_3_Q3_2021.webp" alt="" key={key}/>
+                <img src="/images/SaaSworthy_Most_Worthy_Url_Shorteners_Top_3_Q3_2021.webp" alt="" key={key}/>
               ))
             }
           </div>

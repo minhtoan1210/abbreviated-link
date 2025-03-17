@@ -39,7 +39,7 @@ const VerticalSlider = () => {
           <SwiperSlide key={index}>
             <div className="item-slider">
               <div className="item">
-                <img src="./ico_c_particles.svg" alt="" />
+                <img src="/images/ico_c_particles.svg" alt="" />
                 <div className="item-title">Tailored Links</div>
                 <div className="item-description">
                   Create targeted short links to meet your marketing goals.

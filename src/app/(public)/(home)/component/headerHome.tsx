@@ -18,10 +18,10 @@ export default function HeaderHome() {
           </div>
           <div className="btn-header">
             <Link href="/" className="btn-signup">
-              <img src="./link_bg.svg" alt="" /> <span>Sign up</span>
+              <img src="/images/link_bg.svg" alt="" /> <span>Sign up</span>
             </Link>
             <Link href="/" className="btn-pricing">
-              <img src="./link_bg.svg" alt="" /> <span>Pricing</span>
+              <img src="/images/link_bg.svg" alt="" /> <span>Pricing</span>
             </Link>
           </div>
         </div>

@@ -3,14 +3,12 @@ import { Ubuntu } from "next/font/google";
 import "./globals.css";
 import AppProvider from "@/components/app-provider";
 import { Toaster } from "@/components/ui/toaster";
-import '@ant-design/v5-patch-for-react-19';
 
 const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
 });
-
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,12 +22,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${ubuntu.variable} antialiased`}
-      >
-        <AppProvider>
-          {children}
-        </AppProvider>
+      <body className={`${ubuntu.variable} antialiased`}>
+        <AppProvider>{children}</AppProvider>
         <Toaster />
       </body>
     </html>
