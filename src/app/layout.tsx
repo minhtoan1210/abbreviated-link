@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning className={ubuntu.variable}>
       <body className={`${ubuntu.variable} antialiased`}>
         <AppProvider>{children}</AppProvider>
         <Toaster />

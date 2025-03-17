@@ -1,23 +1,40 @@
 "use client";
-import { useDeleteOrganizationMutation, useGetListOrganization } from "@/queries/useOrganization";
+import {
+  useDeleteOrganizationMutation,
+  useGetListOrganization,
+} from "@/queries/useOrganization";
 import { Edit, Trash2 } from "lucide-react";
 import { Button, Popconfirm, Table } from "antd";
 import dayjs from "dayjs";
 import { DDMMYY } from "@/constants/type";
 import React from "react";
+import Link from "next/link";
 
 interface ComponentTableProps {
-  setId: React.Dispatch<React.SetStateAction<{ type: string; id: string } | null>> 
+  setId: React.Dispatch<
+    React.SetStateAction<{ type: string; id: string } | null>
+  >;
 }
 
 export default function ComponentTable({ setId }: ComponentTableProps) {
   const { data: getListOrganization } = useGetListOrganization();
- const deleteOrganizationMutation = useDeleteOrganizationMutation();
+  const deleteOrganizationMutation = useDeleteOrganizationMutation();
 
   const columns = [
     {
       title: "Name",
       dataIndex: "name",
+      render: (_: any, record: any) => {
+        console.log("record", record)
+        return (
+          <Link
+            href={`/manage/organization/${record?._id}`}
+            className="text-[#4235EF]"
+          >
+            {record?.name}
+          </Link>
+        );
+      },
     },
     {
       title: "Email",
@@ -46,14 +63,12 @@ export default function ComponentTable({ setId }: ComponentTableProps) {
           <Button
             type="text"
             icon={<Edit size={18} className="text-blue-500" />}
-            onClick={() =>
-              setId({ type: "update", id: record._id })
-            } 
+            onClick={() => setId({ type: "update", id: record._id })}
           />
 
           <Popconfirm
             title="Bạn có chắc muốn xóa?"
-            onConfirm={ async () => {
+            onConfirm={async () => {
               await deleteOrganizationMutation.mutateAsync(record._id);
             }}
             okText="Xóa"

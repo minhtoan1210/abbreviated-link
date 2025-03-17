@@ -146,16 +146,16 @@ export default function Footer() {
               </div>
               <div className="footer-society">
                 <a href="http://">
-                  <img src="./fb.svg" alt="" />
+                  <img src="/images/fb.svg" alt="" />
                 </a>
                 <a href="http://">
-                  <img src="./twitter.svg" alt="" />
+                  <img src="/images/twitter.svg" alt="" />
                 </a>
                 <a href="http://">
-                  <img src="./instagram.svg" alt="" />
+                  <img src="/images/instagram.svg" alt="" />
                 </a>
                 <a href="http://">
-                  <img src="./linkedin.svg" alt="" />
+                  <img src="/images/linkedin.svg" alt="" />
                 </a>
               </div>
             </div>

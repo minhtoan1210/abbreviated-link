@@ -14,6 +14,7 @@ import {
   useUpdateOrganizationMutation,
 } from "@/queries/useOrganization";
 import OrganizationFormFields from "./organizationForm";
+import { toast } from "react-toastify";
 
 interface CreateFormProps {
   data: { type: string; id: string } | null;
@@ -50,7 +51,6 @@ export default function OrganizationForm({ data, setId }: CreateFormProps) {
 
   useEffect(() => {
     if (getIdOrganization && data?.type === "update") {
-      console.log("Data từ API:", getIdOrganization.data);
       setIsModalOpen(true);
       formMethods.reset(getIdOrganization.data);
     }
@@ -80,12 +80,13 @@ export default function OrganizationForm({ data, setId }: CreateFormProps) {
       } else {
         await createOrganizationMutation.mutateAsync(values);
       }
+      formMethods.reset();
+      setId(null);
+      setIsModalOpen(false);
     } catch (error: any) {
-      console.log(error);
+       toast.error(`Lỗi: ${error.toString()}`);
     }
-    formMethods.reset();
-    setId(null);
-    setIsModalOpen(false);
+
   };
 
   return (
