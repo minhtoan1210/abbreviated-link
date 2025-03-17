@@ -36,6 +36,19 @@ export const RefreshTokenRes = z.object({
   message: z.string(),
 });
 
+export const ProfileBody = z
+  .object({
+    email: z.string().email(),
+    fullname: z.string().min(1).max(100),
+    password: z.string(),
+    confirm_password: z.string(),
+    phone_number: z.string().min(1).max(20)
+  })
+  .refine((data) => data.password === data.confirm_password, {
+    message: "Passwords do not match",
+    path: ["confirm_password"],
+  });
+
 export type LoginBodyType = z.TypeOf<typeof LoginBody>;
 
 export type LoginResType = z.TypeOf<typeof LoginRes>;
@@ -43,3 +56,5 @@ export type LoginResType = z.TypeOf<typeof LoginRes>;
 export type RefreshTokenResType = z.TypeOf<typeof RefreshTokenRes>;
 
 export type RegisterResResType = z.TypeOf<typeof RegisterRes>;
+
+export type ProfileBodyType = z.TypeOf<typeof ProfileBody>;

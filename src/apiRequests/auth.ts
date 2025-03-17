@@ -5,6 +5,7 @@ import {
   RefreshTokenResType,
   RegisterResResType,
 } from "@/schemaValidations/auth.schema";
+import { JwtPayload } from "jsonwebtoken";
 
 const authApiRequest = {
   refreshTokenRequest: null as
@@ -19,7 +20,10 @@ const authApiRequest = {
   login: (body: LoginBodyType) => http.post<LoginResType>("/auth/login", body),
 
   register: (body: RegisterResResType) => http.post<any>("/user", body),
-  
+  updateProfile: ({ body, id }: { body: RegisterResResType; id: string }) =>
+    http.patch<any>(`/user`, body),
+  getProfile: (id: string | JwtPayload) => http.get<any>(`/user/${id}`),
+
   auth: (body: {
     accessToken: string;
     access_expires_at: string | number;

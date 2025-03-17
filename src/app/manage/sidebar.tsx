@@ -104,15 +104,15 @@ export default function Sidebar({
               <DropdownMenuContent className="bg-white w-[150px] border-[solid] border-[#f8f8f8]">
                 <DropdownMenuItem>
                   <Link
-                    href="/"
-                    className="text-[16px  text-center] w-full p-[15px] hover:text-[#ffffff] hover:bg-[#1b5aff] text-[12px] cursor-pointer"
+                    href="/manage/profile"
+                    className="text-[16px]  text-left w-full p-[15px] hover:text-[#ffffff] hover:bg-[#1b5aff] cursor-pointer"
                   >
                     Edit account
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <div
-                    className="text-[16px  text-center] w-full p-[15px] hover:text-[#ffffff] hover:bg-[#1b5aff] text-[12px] cursor-pointer"
+                    className="text-[16px]  text-left w-full p-[15px] hover:text-[#ffffff] hover:bg-[#1b5aff] cursor-pointer"
                     onClick={handleLogout}
                   >
                     Log out
