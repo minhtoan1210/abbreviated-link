@@ -44,6 +44,16 @@ export const useGetListOrganization = (param?: {
   });
 };
 
+export const useGetListUserOrganization = (id:string) => {
+  return useQuery({
+    queryKey: ["get-list-user-organization"],
+    queryFn: async () => {
+      const res = await organizationApiRequest.getListUserOrganization(id);
+      return res?.data || [];
+    },
+  });
+};
+
 export const useGetIdOrganization = (id?: string) => {
   return useQuery({
     queryKey: ["get-id-organization", id],
@@ -53,5 +63,16 @@ export const useGetIdOrganization = (id?: string) => {
       return res?.data || [];
     },
     enabled: !!id,
+  });
+};
+
+
+export const useAddUserOrganizationMutation = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: organizationApiRequest.addUserOrganization,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["get-list-user-organization"] });
+    },
   });
 };

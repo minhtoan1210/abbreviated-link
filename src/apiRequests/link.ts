@@ -1,9 +1,7 @@
 import http from "@/lib/http";
 import {
-  CreateLinkBodyType,
   LinkResType,
 } from "@/schemaValidations/link.schema";
-import queryString from "query-string";
 
 const linkApiRequest = {
   listLink: (param: { page: string | number; limit: string | number }) =>
