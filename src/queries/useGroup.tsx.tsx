@@ -53,3 +53,14 @@ export const useUpdateGroupMutation = () => {
     },
   });
 };
+
+export const useDeteleGroupMutation = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: groupApiRequest.deleteGroup,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["links-Group"] });
+    },
+  });
+};
+

@@ -30,6 +30,7 @@ import {
   Star,
   Tags,
   Unlink,
+  UsersRound,
 } from "lucide-react";
 import "./style.css";
 
@@ -44,7 +45,11 @@ export const menuItems: MenuItem[] = [
       {
         key: "dashboard",
         icon: <DashboardOutlined className="icon-menuItem" />,
-        label: <Link href="/manage/dashboard" className="a-menuItem">Dashboard</Link>,
+        label: (
+          <Link href="/manage/dashboard" className="a-menuItem">
+            Dashboard
+          </Link>
+        ),
         roles: ["admin", "user"],
       },
       {
@@ -56,61 +61,116 @@ export const menuItems: MenuItem[] = [
           {
             key: "link-management-dashboard",
             icon: <DashboardOutlined className="icon-menuItem" />,
-            label: <Link href="/manage/dashboard" className="a-menuItem">Dashboard</Link>,
+            label: (
+              <Link href="/manage/dashboard" className="a-menuItem">
+                Dashboard
+              </Link>
+            ),
             roles: ["admin", "user"],
           },
           {
             key: "aggregated-link-analytics",
             icon: <ChartNoAxesColumn className="icon-menuItem" />,
-            label: <Link href="/option10" className="a-menuItem">Aggregated Link Analytics</Link>,
+            label: (
+              <Link href="/option10" className="a-menuItem">
+                Aggregated Link Analytics
+              </Link>
+            ),
             roles: ["admin", "user"],
           },
           {
             key: "custom-branded-domains",
             icon: <Globe className="icon-menuItem" />,
-            label: <Link href="/manage/link-management/custom-branded-domains" className="a-menuItem">Custom Branded Domains</Link>,
+            label: (
+              <Link
+                href="/manage/link-management/custom-branded-domains"
+                className="a-menuItem"
+              >
+                Custom Branded Domains
+              </Link>
+            ),
             roles: ["admin", "user"],
           },
           {
             key: "favourites",
             icon: <Star className="icon-menuItem" />,
-            label: <Link href="/manage/link-management/favourites" className="a-menuItem">Favourites</Link>,
+            label: (
+              <Link
+                href="/manage/link-management/favourites"
+                className="a-menuItem"
+              >
+                Favourites
+              </Link>
+            ),
             roles: ["admin", "user"],
           },
           {
             key: "hidden-urls",
             icon: <EyeOff className="icon-menuItem" />,
-            label: <Link href="/manage/link-management/hidden-urls" className="a-menuItem">Hidden URLs</Link>,
+            label: (
+              <Link
+                href="/manage/link-management/hidden-urls"
+                className="a-menuItem"
+              >
+                Hidden URLs
+              </Link>
+            ),
             roles: ["admin", "user"],
           },
           {
             key: "api-urls",
             icon: <Braces className="icon-menuItem" />,
-            label: <Link href="/manage/link-management/api-urls" className="a-menuItem">API URLs</Link>,
+            label: (
+              <Link
+                href="/manage/link-management/api-urls"
+                className="a-menuItem"
+              >
+                API URLs
+              </Link>
+            ),
             roles: ["admin", "user"],
           },
           {
             key: "tags",
             icon: <Tags className="icon-menuItem" />,
-            label: <Link href="/manage/link-management/tags" className="a-menuItem">Tags</Link>,
+            label: (
+              <Link href="/manage/link-management/tags" className="a-menuItem">
+                Tags
+              </Link>
+            ),
             roles: ["admin", "user"],
           },
           {
             key: "bulk-links",
             icon: <NotebookText className="icon-menuItem" />,
-            label: <Link href="/manage/link-management/bulk-links" className="a-menuItem">bulk links</Link>,
+            label: (
+              <Link
+                href="/manage/link-management/bulk-links"
+                className="a-menuItem"
+              >
+                bulk links
+              </Link>
+            ),
             roles: ["admin", "user"],
           },
           {
             key: "export-your-urls",
             icon: <ExportOutlined className="icon-menuItem" />,
-            label: <Link href="/Export" className="a-menuItem">Export your URLs</Link>,
+            label: (
+              <Link href="/Export" className="a-menuItem">
+                Export your URLs
+              </Link>
+            ),
             roles: ["admin", "user"],
           },
           {
             key: "bulk-shortening",
             icon: <ExportOutlined className="icon-menuItem" />,
-            label: <Link href="/Bulk" className="a-menuItem">Bulk shortening (CSV)</Link>,
+            label: (
+              <Link href="/Bulk" className="a-menuItem">
+                Bulk shortening (CSV)
+              </Link>
+            ),
             roles: ["admin", "user"],
           },
         ],
@@ -118,7 +178,11 @@ export const menuItems: MenuItem[] = [
       {
         key: "limits-volume",
         icon: <AlignJustify className="icon-menuItem" />,
-        label: <Link href="/manage/limits" className="a-menuItem">Limits / volume</Link>,
+        label: (
+          <Link href="/manage/limits" className="a-menuItem">
+            Limits / volume
+          </Link>
+        ),
         roles: ["admin", "user"],
       },
     ],
@@ -131,13 +195,11 @@ export const menuItems: MenuItem[] = [
       {
         key: "your-teams",
         icon: <TeamOutlined className="icon-menuItem" />,
-        label: <Link href="/manage/your-teams" className="a-menuItem">Your teams</Link>,
-        roles: ["admin", "user"],
-      },
-      {
-        key: "create-new-team",
-        icon: <FilePlus className="icon-menuItem" />,
-        label: <Link href="/manage/create-new-team" className="a-menuItem">Create new team</Link>,
+        label: (
+          <Link href="/manage/your-teams" className="a-menuItem">
+            Your teams
+          </Link>
+        ),
         roles: ["admin", "user"],
       },
     ],
@@ -149,37 +211,10 @@ export const menuItems: MenuItem[] = [
     children: [
       {
         key: "Organization",
-        icon:  <Building  className="icon-menuItem" />,
-        label: <Link href="/manage/organization" className="a-menuItem">Organization</Link>,
-        roles: ["admin", "user"],
-      },
-     
-    ],
-  },
-  {
-    key: "Link-in-bio",
-    label: "Link-in-bio",
-    type: "group",
-    children: [
-      {
-        key: "Link-in-bio",
-        icon: <Layers className="icon-menuItem" />,
-        label: <Link href="/Your" className="a-menuItem">Link-in-bio</Link>,
-        roles: ["admin", "user"],
-      },
-    ],
-  },
-  {
-    key: "Cuttly Surveys",
-    label: "Cuttly Surveys",
-    type: "group",
-    children: [
-      {
-        key: "Surveys-new",
-        icon: <Layers className="icon-menuItem" />,
+        icon: <Building className="icon-menuItem" />,
         label: (
-          <Link href="/Your" className="a-menuItem">
-            Surveys <span>New</span>
+          <Link href="/manage/organization" className="a-menuItem">
+            Organization
           </Link>
         ),
         roles: ["admin", "user"],
@@ -187,172 +222,18 @@ export const menuItems: MenuItem[] = [
     ],
   },
   {
-    key: "More",
-    label: "More",
+    key: "User",
+    label: "User",
     type: "group",
     children: [
       {
-        key: "api",
-        icon: <ApiOutlined className="icon-menuItem" />,
-        label: <Link href="/dashboard" className="a-menuItem">API</Link>,
-        roles: ["admin", "user"],
-        children: [
-          {
-            key: "api-documentation",
-            icon: <ApiOutlined className="icon-menuItem" />,
-            label: <Link href="/dashboard" className="a-menuItem">API documentation</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "api-key",
-            icon: <ApiOutlined className="icon-menuItem" />,
-            label: <Link href="/option10" className="a-menuItem">API Key</Link>,
-            roles: ["admin", "user"],
-          },
-        ],
-      },
-      {
-        key: "more-more",
-        label: <span className="a-menuItem">More</span>,
-        icon: <Ellipsis className="icon-menuItem" />,
-        roles: ["admin", "user"],
-        children: [
-          {
-            key: "preview-mode",
-            icon: <Eye className="icon-menuItem" />,
-            label: <Link href="/dashboard" className="a-menuItem">Preview mode</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "check-url",
-            icon: <SearchCheck className="icon-menuItem" />,
-            label: <Link href="/option10" className="a-menuItem">Check url</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "cutt-url-button",
-            icon: <Unlink className="icon-menuItem" />,
-            label: <Link href="/custom" className="a-menuItem">CUTT URL button</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "available-features",
-            icon: <Inbox className="icon-menuItem" />,
-            label: <Link href="/Favourites" className="a-menuItem">Available features</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "unsubscribe-newsletter",
-            icon: <ShieldMinus className="icon-menuItem" />,
-            label: <Link href="/Hidden" className="a-menuItem">Unsubscribe newsletter</Link>,
-            roles: ["admin", "user"],
-          },
-        ],
-      } as any,
-      {
-        key: "ENlanguage",
-        label: <span className="a-menuItem">EN</span>,
-        icon: <Globe className="icon-menuItem" />,
-        roles: ["admin", "user"],
-        children: [
-          {
-            key: "EN",
-            label: <Link href="/dashboard" className="a-menuItem">EN | English</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "PL",
-            label: <Link href="/option10" className="a-menuItem">PL | Polski</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "AR",
-            label: <Link href="/custom" className="a-menuItem">AR | عربى</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "DE",
-            label: <Link href="/Favourites" className="a-menuItem">DE | Deutsch</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "ES",
-            label: <Link href="/Hidden" className="a-menuItem">ES | Español</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "FR",
-            label: <Link href="/Hidden" className="a-menuItem">FR | Français</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "HI",
-            label: <Link href="/Hidden" className="a-menuItem">HI | हिन्दी</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "IT",
-            label: <Link href="/Hidden" className="a-menuItem">IT | Italiano</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "JA",
-            label: <Link href="/Hidden" className="a-menuItem">JA | 日本語</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "KO",
-            label: <Link href="/Hidden" className="a-menuItem">KO | 한국어</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "NL",
-            label: <Link href="/Hidden" className="a-menuItem">NL | Nederlands</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "PT",
-            label: <Link href="/Hidden" className="a-menuItem">PT | Português</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "RU",
-            label: <Link href="/Hidden" className="a-menuItem">RU | Русский</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "TR",
-            label: <Link href="/Hidden" className="a-menuItem">TR | Türkçe</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "UK",
-            label: <Link href="/Hidden" className="a-menuItem">UK | Українська</Link>,
-            roles: ["admin", "user"],
-          },
-          {
-            key: "ZH",
-            label: <Link href="/Hidden" className="a-menuItem">ZH | 中文</Link>,
-            roles: ["admin", "user"],
-          },
-        ],
-      },
-      {
-        key: "integrations",
-        icon: <CircleHelp  className="icon-menuItem" />,
-        label: <Link href="/dashboard" className="a-menuItem">Integrations</Link>,
-        roles: ["admin", "user"],
-      },
-      {
-        key: "support",
-        icon: <CircleHelp className="icon-menuItem" />,
-        label: <Link href="/dashboard" className="a-menuItem">Support</Link>,
-        roles: ["admin", "user"],
-      },
-      {
-        key: "abuse-report",
-        icon: <CircleAlert className="icon-menuItem" />,
-        label: <Link href="/dashboard" className="a-menuItem">Abuse report</Link>,
+        key: "User",
+        icon: <UsersRound  className="icon-menuItem" />,
+        label: (
+          <Link href="/manage/user" className="a-menuItem">
+            User
+          </Link>
+        ),
         roles: ["admin", "user"],
       },
     ],
@@ -365,13 +246,21 @@ export const menuItems: MenuItem[] = [
       {
         key: "your-account",
         icon: <Settings className="icon-menuItem" />,
-        label: <Link href="/dashboard" className="a-menuItem">Edit account</Link>,
+        label: (
+          <Link href="/dashboard" className="a-menuItem">
+            Edit account
+          </Link>
+        ),
         roles: ["admin", "user"],
       },
       {
         key: "log-out",
         icon: <LogOut className="icon-menuItem" />,
-        label: <Link href="/dashboard" className="a-menuItem">Log out</Link>,
+        label: (
+          <Link href="/dashboard" className="a-menuItem">
+            Log out
+          </Link>
+        ),
         roles: ["admin", "user"],
       },
     ],

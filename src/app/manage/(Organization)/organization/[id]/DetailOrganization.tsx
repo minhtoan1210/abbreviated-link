@@ -1,26 +1,12 @@
 "use client";
 import { useParams } from "next/navigation";
-import React, { useRef, useState } from "react";
+import React from "react";
 import {
-  useAddUserOrganizationMutation,
   useGetIdOrganization,
 } from "@/queries/useOrganization";
-import Link from "next/link";
-import dayjs from "dayjs";
-import { DDMMYY } from "@/constants/type";
-import { Button, Modal, Popconfirm, Table } from "antd";
-import { CirclePlus, Edit, Trash2 } from "lucide-react";
-import { Controller, useForm } from "react-hook-form";
-import { Form, Input } from "antd";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  AddOrganizationBody,
-  AddOrganizationBodyType,
-} from "@/schemaValidations/organization";
-import { toast } from "react-toastify";
-import { useAddUserGroupMutation } from "@/queries/useGroup.tsx";
 import OrganizationGroups from "./component/OrganizationGroups";
 import OrganizationUsers from "./component/OrganizationUsers";
+import './component/style.css'
 
 export default function DetailOrganization() {
   const { id } = useParams();

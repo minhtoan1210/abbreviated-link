@@ -26,7 +26,7 @@ export const useProfile = () => {
   }
 
   const token = localStorage.getItem("accessToken");
-  const decodedAccessToken = token ? jwt.decode(token) as any : null;
+  const decodedAccessToken = token ? (jwt.decode(token) as any) : null;
 
   return useQuery({
     queryKey: ["links"],
@@ -38,7 +38,6 @@ export const useProfile = () => {
     },
   });
 };
-
 
 export const useUpdateProfileMutation = () => {
   return useMutation({

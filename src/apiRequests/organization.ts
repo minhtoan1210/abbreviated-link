@@ -55,6 +55,7 @@ const organizationApiRequest = {
     body: DeleteOrganizationBodyType;
     id: string;
   }) => http.patch(`${prefix}/remove-user/${id}`, body),
+
 };
 
 export default organizationApiRequest;

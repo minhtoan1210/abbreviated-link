@@ -21,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={ubuntu.variable}>
-      <body className={`${ubuntu.variable} antialiased`}>
+    <html lang="en" suppressHydrationWarning className={ubuntu.variable} >
+      <body className={`${ubuntu.variable} antialiased bg-[#f5f5f5]`}>
         <AppProvider>{children}</AppProvider>
         <Toaster />
       </body>

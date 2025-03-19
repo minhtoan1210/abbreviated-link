@@ -76,3 +76,15 @@ export const useAddUserOrganizationMutation = () => {
     },
   });
 };
+
+export const useDeleteUserOrganizationMutation = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: organizationApiRequest.deleteUserOrganization,
+    onSuccess: (_, variables) => {
+      queryClient.invalidateQueries({ queryKey: ["get-list-user-organization"] });
+      queryClient.invalidateQueries({ queryKey: ["links-Group", variables.id] });
+    },
+  });
+};
+

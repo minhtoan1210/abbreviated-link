@@ -1,8 +1,16 @@
 "use client";
-
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Button, Menu, Layout, Space, Input, ConfigProvider } from "antd";
+import {
+  Button,
+  Menu,
+  Layout,
+  Space,
+  Input,
+  ConfigProvider,
+  Form,
+  Select,
+} from "antd";
 import Sider from "antd/es/layout/Sider";
 import { Content, Header } from "antd/es/layout/layout";
 import type { MenuProps } from "antd";
@@ -19,6 +27,9 @@ import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useLogoutMutation } from "@/queries/useAuth";
 import { useRouter } from "next/navigation";
+import { useGetListOrganization } from "@/queries/useOrganization";
+import { Controller } from "react-hook-form";
+import { setLocalStorage } from "@/lib/utils";
 
 type SearchProps = GetProps<typeof Input.Search>;
 
@@ -30,6 +41,14 @@ export default function Sidebar({
   const [collapsed, setCollapsed] = useState(false);
   const router = useRouter();
   const logoutMutation = useLogoutMutation();
+  const { data: getListOrganization } = useGetListOrganization();
+
+  useEffect(() => {
+    if (getListOrganization?.data?.length) {
+      setLocalStorage("organization", getListOrganization.data[0]._id);
+      setDefaultSelected([getListOrganization.data[0].name]);
+    }
+  }, [getListOrganization]);
 
   const onSearch: SearchProps["onSearch"] = (value, _e, info) => {
     console.log(info?.source, value);
@@ -44,12 +63,19 @@ export default function Sidebar({
     router.push("/login");
   };
 
+  const [defaultSelected, setDefaultSelected] = useState<string[]>([]);
+
+  const handleSelectOrganization = (value: any) => {
+    setLocalStorage("organization", value);
+  };
+
   return (
     <Layout style={{ height: "100vh" }}>
       <Sider
         style={{
           height: "100vh",
           overflowY: "scroll",
+          background: "#f5f5f5"
         }}
         trigger={null}
         collapsible
@@ -89,11 +115,28 @@ export default function Sidebar({
           />
           <div className="right">
             <Space direction="vertical">
-              <Search
+              {/* <Search
                 placeholder="search by link"
                 onSearch={onSearch}
                 className="flex"
-              />
+              /> */}
+              <Form>
+                <Form.Item label="Tên Cty">
+                  <Select
+                    style={{ width: "100%" }}
+                    placeholder="Chọn người dùng"
+                    optionFilterProp="children"
+                    value={defaultSelected}
+                    onChange={(value) => handleSelectOrganization(value)}
+                  >
+                    {getListOrganization?.data?.map((user: any) => (
+                      <Select.Option key={user._id} value={user._id}>
+                        {user.name}
+                      </Select.Option>
+                    ))}
+                  </Select>
+                </Form.Item>
+              </Form>
             </Space>
             <DropdownMenu>
               <DropdownMenuTrigger asChild className="your-account">

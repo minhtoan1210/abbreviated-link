@@ -1,0 +1,17 @@
+.organization-users_detail {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 0.1rem 1.2rem #f2f3f4;
+}
+
+.organization-users_detail .title{
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 2rem;
+}
+
+.organization-users_detail .title>span {
+    font-size: 2rem;
+}

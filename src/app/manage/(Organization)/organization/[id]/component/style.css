@@ -1,0 +1,35 @@
+.organization {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 1px 12px #f2f3f9;
+}
+
+.organization .organization-name,
+.organization .organization-email,
+.organization .organization-address,
+.organization .organization-phone {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.organization .organization-email { 
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.organization .organization-users_detail .title {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.6rem;
+}
+.organization .organization-users_detail .title span {
+    font-size: 1.6rem;
+} 
+
+.organization-users_groups .title{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
