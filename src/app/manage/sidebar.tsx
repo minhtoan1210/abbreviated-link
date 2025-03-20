@@ -14,7 +14,7 @@ import {
 import Sider from "antd/es/layout/Sider";
 import { Content, Header } from "antd/es/layout/layout";
 import type { MenuProps } from "antd";
-import { menuItems } from "./menuItems";
+import { filterMenuByRole, menuItems } from "./menuItems";
 import type { GetProps } from "antd";
 import {
   DropdownMenu,
@@ -26,22 +26,29 @@ import {
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useLogoutMutation } from "@/queries/useAuth";
-import { useRouter } from "next/navigation";
+import {
+  useParams,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 import { useGetListOrganization } from "@/queries/useOrganization";
-import { Controller } from "react-hook-form";
-import { setLocalStorage } from "@/lib/utils";
+import { getLocalStorage, setLocalStorage } from "@/lib/utils";
+import { jwtDecode } from "jwt-decode";
+import { Role } from "@/constants/type";
 
 type SearchProps = GetProps<typeof Input.Search>;
-
-const { Search } = Input;
 
 export default function Sidebar({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const [collapsed, setCollapsed] = useState(false);
-  const router = useRouter();
   const logoutMutation = useLogoutMutation();
   const { data: getListOrganization } = useGetListOrganization();
+  const router = useRouter();
+  const pathname = usePathname();
+  const [filteredMenu, setFilteredMenu] = useState(menuItems);
+  const [role, setRole] = useState<any>(null);
 
   useEffect(() => {
     if (getListOrganization?.data?.length) {
@@ -50,9 +57,32 @@ export default function Sidebar({
     }
   }, [getListOrganization]);
 
-  const onSearch: SearchProps["onSearch"] = (value, _e, info) => {
-    console.log(info?.source, value);
-  };
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+
+    if (token) {
+      try {
+        const decoded = jwtDecode<{ user: { type: string } }>(token);
+        const userRole = decoded.user.type;
+        setLocalStorage("roles", userRole);
+        setRole(userRole);
+
+        setFilteredMenu(
+          filterMenuByRole(
+            menuItems,
+            [userRole],
+            getLocalStorage("organization")
+          )
+        );
+      } catch (error) {
+        console.error("Lỗi khi giải mã token:", error);
+        setFilteredMenu([]);
+      }
+    } else {
+      console.warn("Token không tồn tại!");
+      setFilteredMenu([]);
+    }
+  }, []);
 
   const onClick: MenuProps["onClick"] = (e) => {
     console.log("click ", e);
@@ -66,7 +96,11 @@ export default function Sidebar({
   const [defaultSelected, setDefaultSelected] = useState<string[]>([]);
 
   const handleSelectOrganization = (value: any) => {
+    setDefaultSelected(value);
     setLocalStorage("organization", value);
+    if (pathname.startsWith("/manage/organization")) {
+      router.push(`/manage/organization/${value}`);
+    }
   };
 
   return (
@@ -75,7 +109,7 @@ export default function Sidebar({
         style={{
           height: "100vh",
           overflowY: "scroll",
-          background: "#f5f5f5"
+          background: "#f5f5f5",
         }}
         trigger={null}
         collapsible
@@ -99,7 +133,7 @@ export default function Sidebar({
           defaultSelectedKeys={["1"]}
           defaultOpenKeys={["sub1"]}
           mode="inline"
-          items={menuItems}
+          items={filteredMenu}
         />
       </Sider>
       <Layout>
@@ -115,28 +149,27 @@ export default function Sidebar({
           />
           <div className="right">
             <Space direction="vertical">
-              {/* <Search
-                placeholder="search by link"
-                onSearch={onSearch}
-                className="flex"
-              /> */}
-              <Form>
-                <Form.Item label="Tên Cty">
-                  <Select
-                    style={{ width: "100%" }}
-                    placeholder="Chọn người dùng"
-                    optionFilterProp="children"
-                    value={defaultSelected}
-                    onChange={(value) => handleSelectOrganization(value)}
-                  >
-                    {getListOrganization?.data?.map((user: any) => (
-                      <Select.Option key={user._id} value={user._id}>
-                        {user.name}
-                      </Select.Option>
-                    ))}
-                  </Select>
-                </Form.Item>
-              </Form>
+              {role && Object.values(Role).includes(role) ? (
+                <Form>
+                  <Form.Item label="Tên Cty">
+                    <Select
+                      style={{ width: "100%" }}
+                      placeholder="Chọn người dùng"
+                      optionFilterProp="children"
+                      value={defaultSelected}
+                      onChange={(value) => handleSelectOrganization(value)}
+                    >
+                      {getListOrganization?.data?.map((user: any) => (
+                        <Select.Option key={user._id} value={user._id}>
+                          {user.name}
+                        </Select.Option>
+                      ))}
+                    </Select>
+                  </Form.Item>
+                </Form>
+              ) : (
+                ""
+              )}
             </Space>
             <DropdownMenu>
               <DropdownMenuTrigger asChild className="your-account">

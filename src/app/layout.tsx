@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
 import "./globals.css";
 import AppProvider from "@/components/app-provider";
-import { Toaster } from "@/components/ui/toaster";
 
 const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
@@ -24,7 +23,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={ubuntu.variable} >
       <body className={`${ubuntu.variable} antialiased bg-[#f5f5f5]`}>
         <AppProvider>{children}</AppProvider>
-        <Toaster />
       </body>
     </html>
   );

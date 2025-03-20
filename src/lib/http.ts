@@ -60,7 +60,6 @@ axiosInstance.interceptors.response.use(
   (response) => {
     if (isClient) {
       const normalizeUrl = normalizePath(response.config.url || "");
-      console.log("normalizeUrl", normalizeUrl)
       if (normalizeUrl === "/api/auth/login") {
         const { accessToken, refreshToken } = response.data;
         setAccessTokenToLocalStorage(accessToken);

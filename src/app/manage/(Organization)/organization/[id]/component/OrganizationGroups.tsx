@@ -12,6 +12,7 @@ import {
 } from "@/queries/useGroup.tsx";
 import { useParams } from "next/navigation";
 import { Table } from "antd";
+import { getLocalStorage } from "@/lib/utils";
 
 export default function OrganizationGroups() {
   const [isCheck, setIscheck] = useState({
@@ -19,7 +20,7 @@ export default function OrganizationGroups() {
     id: "",
   });
   const { id } = useParams();
-  const { data: getListGroup } = useGetListGroup(id as string);
+  const { data: getListGroup } = useGetListGroup(getLocalStorage('roles') === 'admin' ? id : getLocalStorage('organization'));
   const { data: getIdGroup } = useGetIdGroup(isCheck?.id);
 
   const formGroup = useForm<AddGruopOrganizationBodyType>({

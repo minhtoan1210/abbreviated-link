@@ -1,3 +1,4 @@
+'use client'
 import { Button, QRCode } from "antd";
 import React, { useRef } from "react";
 import "./style.css";

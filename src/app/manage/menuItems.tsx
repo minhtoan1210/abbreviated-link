@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import {
-  ApiOutlined,
   DashboardOutlined,
   ExportOutlined,
   LinkOutlined,
@@ -13,23 +12,13 @@ import {
   Braces,
   Building,
   ChartNoAxesColumn,
-  CircleAlert,
-  CircleHelp,
-  Ellipsis,
-  Eye,
   EyeOff,
-  FilePlus,
   Globe,
-  Inbox,
-  Layers,
   LogOut,
   NotebookText,
-  SearchCheck,
   Settings,
-  ShieldMinus,
   Star,
   Tags,
-  Unlink,
   UsersRound,
 } from "lucide-react";
 import "./style.css";
@@ -210,15 +199,25 @@ export const menuItems: MenuItem[] = [
     type: "group",
     children: [
       {
-        key: "Organization",
+        key: "Organization_user",
         icon: <Building className="icon-menuItem" />,
         label: (
-          <Link href="/manage/organization" className="a-menuItem">
+          <Link href="/manage/organization/:token" className="a-menuItem">
             Organization
           </Link>
         ),
-        roles: ["admin", "user"],
+        roles: ["admin","user"],
       },
+      // {
+      //   key: "Organization_admin",
+      //   icon: <Building className="icon-menuItem" />,
+      //   label: (
+      //     <Link href="/manage/organization/" className="a-menuItem">
+      //       Organization
+      //     </Link>
+      //   ),
+      //   roles: ["admin",],
+      // },
     ],
   },
   {
@@ -228,10 +227,27 @@ export const menuItems: MenuItem[] = [
     children: [
       {
         key: "User",
-        icon: <UsersRound  className="icon-menuItem" />,
+        icon: <UsersRound className="icon-menuItem" />,
         label: (
           <Link href="/manage/user" className="a-menuItem">
             User
+          </Link>
+        ),
+        roles: ["admin", "user"],
+      },
+    ],
+  },
+  {
+    key: "Setting",
+    label: "Setting",
+    type: "group",
+    children: [
+      {
+        key: "Setting",
+        icon: <Settings  className="icon-menuItem" />,
+        label: (
+          <Link href="/manage/setting" className="a-menuItem">
+            Setting
           </Link>
         ),
         roles: ["admin", "user"],
@@ -266,3 +282,24 @@ export const menuItems: MenuItem[] = [
     ],
   },
 ];
+
+export const filterMenuByRole = (
+  menuItems: MenuItem[],
+  userRoles: string[],
+  token: string
+): MenuItem[] => {
+  return menuItems
+    .filter(item => !item.roles || item.roles.some(role => userRoles.includes(role)))
+    .map((item: any) => ({
+      ...item,
+      label:
+        typeof item.label === "object" && "props" in item.label ? (
+          React.cloneElement(item.label, {
+            href: item.label.props.href?.replace(":token", token),
+          })
+        ) : (
+          item.label
+        ),
+      children: item.children ? filterMenuByRole(item.children, userRoles, token) : undefined
+    }));
+};

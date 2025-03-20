@@ -1,8 +1,6 @@
 "u";
+import { getLocalStorage } from "@/lib/utils";
 import {
-  useAddUserOrganizationMutation,
-  useDeleteUserOrganizationMutation,
-  useGetIdOrganization,
   useGetListUserOrganization,
 } from "@/queries/useOrganization";
 import {
@@ -10,20 +8,15 @@ import {
   AddOrganizationBodyType,
 } from "@/schemaValidations/organization";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Form, Input, Modal, Popconfirm, Table } from "antd";
-import { CirclePlus, Trash2 } from "lucide-react";
+import { Table } from "antd";
 import { useParams } from "next/navigation";
-import React, { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+import React from "react";
+import { useForm } from "react-hook-form";
 
 export default function OrganizationUsers() {
   const { id } = useParams();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const addUserOrganizationMutation = useAddUserOrganizationMutation();
-  const deleteUserOrganizationMutation = useDeleteUserOrganizationMutation();
   const { data: getListUserOrganization } = useGetListUserOrganization(
-    id as string
+    getLocalStorage("roles") === "admin" ? id : getLocalStorage("organization")
   );
 
   const {
@@ -37,15 +30,6 @@ export default function OrganizationUsers() {
       users: [],
     },
   });
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCancel = () => {
-    reset();
-    setIsModalOpen(false);
-  };
 
   const columns = [
     {

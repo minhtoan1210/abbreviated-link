@@ -30,11 +30,11 @@ import {
   useDeleteLinkMutation,
   useUpdateLinkMutation,
 } from "@/queries/useLink";
-import { useToast } from "@/hooks/use-toast";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ListLinkhType } from "./checkboxes";
 import ComponentQrCode from "@/app/manage/(btnIcon)/qr-code/page";
+import { toast } from "react-toastify";
 
 export default function CardCuttlyShortLink({
   itemLink,
@@ -43,7 +43,6 @@ export default function CardCuttlyShortLink({
 }) {
   const { mutate } = useDeleteLinkMutation();
   const { mutate: updateLinkMutation, isPending } = useUpdateLinkMutation();
-  const { toast } = useToast();
   const router = useRouter();
   const [openDrawer, setOpenDrawer] = useState(false);
   const copyText = useRef(null);
@@ -51,10 +50,7 @@ export default function CardCuttlyShortLink({
 
   const handleRemove = (value: ListLinkhType) => {
     mutate(value._id);
-    toast({
-      description: "Xóa thành công",
-      className: "text-[18px] !important toast",
-    });
+     toast.success("Thêm thành công");
   };
 
   const handleOpenDrawer = (item: any) => {

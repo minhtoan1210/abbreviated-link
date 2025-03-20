@@ -6,15 +6,14 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import { LoginBody, LoginBodyType } from "@/schemaValidations/auth.schema";
 import Link from "next/link";
 import { useLoginMutation } from "@/queries/useAuth";
 import authApiRequest from "@/apiRequests/auth";
+import { toast } from "react-toastify";
 
 export default function LoginForm() {
-  const { toast } = useToast();
   const loginMutation = useLoginMutation();
 
   const form = useForm<LoginBodyType>({
@@ -30,8 +29,7 @@ export default function LoginForm() {
   const onSubmit = async (values: LoginBodyType) => {
     if (loginMutation.isPending) return;
     try {
-
-      const result = await loginMutation.mutateAsync(values)
+      const result = await loginMutation.mutateAsync(values);
 
       await authApiRequest.auth({
         accessToken: result.data.access_token,
@@ -39,16 +37,11 @@ export default function LoginForm() {
         access_expires_at: result.data.access_expires_at,
         refresh_expires_at: result.data.refresh_expires_at,
       });
-
-      toast({
-        description: "Login Thành Công",
-        className: "text-[18px] !important toast",
-      });
-
-      router.push('/manage/dashboard')
-      router.refresh()
+      toast.success("Thêm thành công");
+      router.push("/manage/dashboard");
+      router.refresh();
     } catch (error: any) {
-      console.error("Lỗi khi login:", error);
+      toast.error(`Lỗi: ${error.toString()}`);
     }
   };
 

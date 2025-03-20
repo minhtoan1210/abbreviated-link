@@ -7,10 +7,11 @@ import {
 import OrganizationGroups from "./component/OrganizationGroups";
 import OrganizationUsers from "./component/OrganizationUsers";
 import './component/style.css'
+import { getLocalStorage } from "@/lib/utils";
 
 export default function DetailOrganization() {
   const { id } = useParams();
- const { data: getIdOrganization } = useGetIdOrganization(id as string);
+ const { data: getIdOrganization } = useGetIdOrganization(getLocalStorage('roles') === 'admin' ? id : getLocalStorage('organization'));
 
   return (
     <>
