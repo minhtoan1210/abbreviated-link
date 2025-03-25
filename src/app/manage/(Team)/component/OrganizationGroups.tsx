@@ -57,7 +57,7 @@ export default function OrganizationGroups() {
       title: "Chủ sở hữu",
       dataIndex: "owner",
       render: (_: any, record: any) => {
-        return <div>{record.owner.fullname}</div>;
+        return <div>{record?.owner?.fullname}</div>;
       },
     },
     {

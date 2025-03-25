@@ -140,7 +140,7 @@ export default function Footer() {
         <div className="container">
           <div className="footer">
             <div className="footer-left">
-              <img className="footer-logo" src="./foot_logo.svg" alt="logo" />
+              <img className="footer-logo" src="/images/foot_logo.svg" alt="logo" />
               <div className="footer-text">
                 URL Shortener, Branded Short Links & More | Cuttly
               </div>

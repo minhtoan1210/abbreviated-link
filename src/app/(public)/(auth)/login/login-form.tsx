@@ -37,7 +37,7 @@ export default function LoginForm() {
         access_expires_at: result.data.access_expires_at,
         refresh_expires_at: result.data.refresh_expires_at,
       });
-      toast.success("Thêm thành công");
+      toast.success("Login thành công");
       router.push("/manage/dashboard");
       router.refresh();
     } catch (error: any) {

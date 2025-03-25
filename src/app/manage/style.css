@@ -97,11 +97,7 @@
 
 .ant-tooltip-inner {
     background-color: white !important;
-    color: #ffffff !important;
-}
-
-.ant-tooltip-arrow::before {
-    background-color: black !important;
+    color: #000 !important;
 }
 
 .discover-url .discover-url-addtag .ad_ads {

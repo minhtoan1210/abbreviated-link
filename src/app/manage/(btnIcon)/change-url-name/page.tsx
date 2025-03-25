@@ -11,7 +11,6 @@ export default function ChangeUrlName() {
   const updateLinkMutation = useUpdateLinkMutation();
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
-  const shorten = searchParams.get("shorten");
   const router = useRouter()
 
   const handleChangUrl = () => {

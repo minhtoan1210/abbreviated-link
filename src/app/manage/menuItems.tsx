@@ -12,11 +12,13 @@ import {
   Braces,
   Building,
   ChartNoAxesColumn,
+  CircleDollarSign,
   EyeOff,
   Globe,
   LogOut,
   NotebookText,
   Settings,
+  SquareChartGantt,
   Star,
   Tags,
   UsersRound,
@@ -206,18 +208,18 @@ export const menuItems: MenuItem[] = [
             Organization
           </Link>
         ),
-        roles: ["admin","user"],
+        roles: ["user"],
       },
-      // {
-      //   key: "Organization_admin",
-      //   icon: <Building className="icon-menuItem" />,
-      //   label: (
-      //     <Link href="/manage/organization/" className="a-menuItem">
-      //       Organization
-      //     </Link>
-      //   ),
-      //   roles: ["admin",],
-      // },
+      {
+        key: "Organization_admin",
+        icon: <Building className="icon-menuItem" />,
+        label: (
+          <Link href="/manage/organization/" className="a-menuItem">
+            Organization
+          </Link>
+        ),
+        roles: ["admin",],
+      },
     ],
   },
   {
@@ -243,11 +245,21 @@ export const menuItems: MenuItem[] = [
     type: "group",
     children: [
       {
-        key: "Setting",
-        icon: <Settings  className="icon-menuItem" />,
+        key: "currency",
+        icon: <CircleDollarSign   className="icon-menuItem" />,
         label: (
-          <Link href="/manage/setting" className="a-menuItem">
-            Setting
+          <Link href="/manage/setting/currency" className="a-menuItem">
+            Currency
+          </Link>
+        ),
+        roles: ["admin", "user"],
+      },
+      {
+        key: "Plan",
+        icon: <SquareChartGantt className="icon-menuItem" />,
+        label: (
+          <Link href="/manage/setting/plan" className="a-menuItem">
+            Plan
           </Link>
         ),
         roles: ["admin", "user"],

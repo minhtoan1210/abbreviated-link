@@ -54,7 +54,7 @@ export const AddOrganizationBody = z.object({
 });
 
 export const DeleteOrganizationBody = z.object({
-  users: z.array(z.string()),
+  user: z.array(z.string()),
 });
 
 

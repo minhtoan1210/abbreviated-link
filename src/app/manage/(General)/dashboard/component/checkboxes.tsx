@@ -1,11 +1,17 @@
 "use client";
 import { Input, Button, Drawer, Pagination } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useCreateLinkMutation, useLinkList } from "@/queries/useLink";
 import CardCuttlyShortLink from "./card-cuttly-short-link";
+import { useForm } from "react-hook-form";
+import {
+  updateFavouritesSchema,
+  updateFavouritesType,
+} from "@/schemaValidations/favourites.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useUpdateFavouritesMutation } from "@/queries/useFavourites";
 import { toast } from "react-toastify";
-import { filterMenuByRole } from "@/app/manage/menuItems";
 
 export type ListLinkhType = {
   calls: number;
@@ -19,6 +25,7 @@ export type ListLinkhType = {
   _id: string;
   active: boolean;
   favicon: string;
+  addtag: string
 };
 
 export default function Checkboxes() {
@@ -28,6 +35,14 @@ export default function Checkboxes() {
   const { mutateAsync, isPending } = useCreateLinkMutation();
   const { data: linkList, refetch } = useLinkList(pagination);
   const [open, setOpen] = useState(false);
+  const updateFavouritesMutation = useUpdateFavouritesMutation();
+
+  const { control, watch, reset } = useForm<any>({
+    resolver: zodResolver(updateFavouritesSchema),
+    defaultValues: {
+      favourites: {},
+    },
+  });
 
   const showDrawer = () => {
     setOpen(true);
@@ -41,19 +56,11 @@ export default function Checkboxes() {
     refetch();
   }, []);
 
-  useEffect(() => {
-    const activeItems = linkList?.data?.some(
-      (item: ListLinkhType) => item.active === true
-    );
-    setIsCheck(activeItems);
-  }, [linkList]);
-
   const handleClickAdd = async () => {
     try {
       await mutateAsync({
         original: inputValue as string,
       });
-
       setInputValue("");
       toast.success("Thêm thành công");
     } catch (error: any) {
@@ -63,6 +70,22 @@ export default function Checkboxes() {
 
   const handleTableChange = (page: number, pageSize?: number) => {
     setPagination({ page: page, limit: pageSize || pagination.limit });
+  };
+
+  const selectedLinksArray = Object.entries(watch("favourites") || {})
+    .filter(([_, value]) => value)
+    .map(([key]) => key);
+
+  const onSubmitSwitch = async () => {
+    try {
+      await updateFavouritesMutation.mutateAsync({
+        favourites: selectedLinksArray,
+      });
+      toast.success("Cập nhật Thành Công");
+      reset({ favourites: {} })
+    } catch (error) {
+      toast.error("Cập nhật Thất Bại");
+    }
   };
 
   if (!linkList?.data) return <p>Đang tải dữ liệu...</p>;
@@ -77,7 +100,11 @@ export default function Checkboxes() {
               checkboxes.
             </div>
             <div
-              className={isCheck ? "active btn-create-link" : "btn-create-link"}
+              className={
+                selectedLinksArray.length > 0
+                  ? "active btn-create-link"
+                  : "btn-create-link"
+              }
               onClick={showDrawer}
             >
               Create Link-in-Bio
@@ -104,11 +131,20 @@ export default function Checkboxes() {
               <div className="text-your-domain">your-domain/bio/your-alias</div>
               <div className="text-your-alias">cutt.bio/your-alias</div>
             </Drawer>
-            <div className={isCheck ? "active btn-urls" : "btn-urls"}>
+            <div
+              className={
+                selectedLinksArray.length > 0 ? "active btn-urls" : "btn-urls"
+              }
+            >
               Hide selected URLs
             </div>
             <div
-              className={isCheck ? "active btn-favourites" : "btn-favourites"}
+              className={
+                selectedLinksArray.length > 0
+                  ? "active btn-favourites"
+                  : "btn-favourites"
+              }
+              onClick={onSubmitSwitch}
             >
               add to favourites
             </div>
@@ -145,7 +181,7 @@ export default function Checkboxes() {
           {linkList?.data?.map((item: ListLinkhType, key: number) => {
             return (
               <div key={key}>
-                <CardCuttlyShortLink itemLink={item} />
+                <CardCuttlyShortLink itemLink={item} control={control} />
               </div>
             );
           })}

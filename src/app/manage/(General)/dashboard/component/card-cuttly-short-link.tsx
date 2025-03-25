@@ -21,7 +21,7 @@ import {
   Trash2,
   Twitter,
 } from "lucide-react";
-import { Drawer, Space, Switch, Tooltip } from "antd";
+import { Drawer, Input, Space, Switch, Tooltip } from "antd";
 import { CheckOutlined } from "@ant-design/icons";
 import "./style.css";
 import dayjs from "dayjs";
@@ -30,27 +30,57 @@ import {
   useDeleteLinkMutation,
   useUpdateLinkMutation,
 } from "@/queries/useLink";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ListLinkhType } from "./checkboxes";
 import ComponentQrCode from "@/app/manage/(btnIcon)/qr-code/page";
 import { toast } from "react-toastify";
+import { Controller } from "react-hook-form";
 
 export default function CardCuttlyShortLink({
   itemLink,
+  control,
 }: {
   itemLink: ListLinkhType;
+  control: any;
 }) {
   const { mutate } = useDeleteLinkMutation();
   const { mutate: updateLinkMutation, isPending } = useUpdateLinkMutation();
   const router = useRouter();
   const [openDrawer, setOpenDrawer] = useState(false);
   const copyText = useRef(null);
-  const [checked, setChecked] = useState(itemLink.active);
+  const [value, setValue] = useState("");
+
+  const [isEditing, setIsEditing] = useState(false);
+  const inputRefCardCuttly = useRef<any>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (
+        inputRefCardCuttly.current &&
+        "contains" in inputRefCardCuttly.current
+      ) {
+        if (
+          inputRefCardCuttly.current &&
+          !inputRefCardCuttly.current.contains(event.target as Node)
+        ) {
+          setIsEditing(false);
+        }
+      }
+    };
+
+    if (isEditing) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isEditing]);
 
   const handleRemove = (value: ListLinkhType) => {
     mutate(value._id);
-     toast.success("Thêm thành công");
+    toast.success("Thêm thành công");
   };
 
   const handleOpenDrawer = (item: any) => {
@@ -61,19 +91,32 @@ export default function CardCuttlyShortLink({
     await navigator.clipboard.writeText(value.original);
   };
 
-  const handleCheckSwitch = (value: any) => {
-    updateLinkMutation({
-      id: itemLink._id,
-      body: {
-        active: value,
-      },
-    });
+  // const handleCheckSwitch = (value: any) => {
+  //   updateLinkMutation({
+  //     id: itemLink._id,
+  //     body: {
+  //       active: value,
+  //     },
+  //   });
 
-    setChecked(value);
-  };
+  //   setChecked(value);
+  // };
 
   const handleChangUrl = (value: ListLinkhType) => {
     router.push(`/manage/change-url-name?id=${value._id}`);
+  };
+
+  const handleInputAddTag = (value: any) => {
+    setValue(value);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      console.log("hehe");
+      handleInputAddTag(value);
+      setValue("");
+    }
   };
 
   const IconDiscover = [
@@ -132,15 +175,23 @@ export default function CardCuttlyShortLink({
     },
   ];
 
+  console.log("asd", itemLink?.addtag === "");
+
   return (
     <div className="discover-url">
       <div className="discover-url-date">
         <Space direction="vertical">
-          <Switch
-            checkedChildren={<CheckOutlined />}
-            checked={checked}
-            onChange={handleCheckSwitch}
-            loading={isPending}
+          <Controller
+            name={`favourites.${itemLink._id}`}
+            control={control}
+            render={({ field: { value, onChange } }) => (
+              <Switch
+                checkedChildren={<CheckOutlined />}
+                checked={!!value}
+                onChange={(checked) => onChange(checked ? itemLink._id : false)}
+                loading={isPending}
+              />
+            )}
           />
         </Space>
         <div className="text-date">
@@ -197,7 +248,21 @@ export default function CardCuttlyShortLink({
           Upgrade
         </Link>
         <div className="btn-addtag">
-          <span>#add tag</span>
+          {isEditing ? (
+            <Input
+              ref={inputRefCardCuttly}
+              type="text"
+              value={value}
+              onChange={(e) => handleInputAddTag(e.target.value)}
+              onBlur={() => setIsEditing(false)}
+              onKeyDown={handleKeyDown}
+              autoFocus
+            />
+          ) : (
+            <span onClick={() => setIsEditing(true)}>
+              {itemLink?.addtag !== "" ? itemLink.addtag : "#add tag"}
+            </span>
+          )}
           <div className="clicks">
             <ChartNoAxesColumn />
             <span>259</span>

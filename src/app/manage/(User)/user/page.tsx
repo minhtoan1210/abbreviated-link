@@ -65,7 +65,7 @@ export default function page() {
             onConfirm={async () => {
               await deleteUserOrganizationMutation.mutateAsync({
                 body: {
-                  users: [record._id],
+                  user: record._id,
                 },
                 id: id as string,
               });

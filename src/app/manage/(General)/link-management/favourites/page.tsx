@@ -1,22 +1,40 @@
+'use client'
 import React from "react";
 import "./style.css";
 import CardCuttlyShortLink from "../../dashboard/component/card-cuttly-short-link";
-
-const item: any = {
-  _id: "67ca9969d849a3cc62e14bc8",
-  user: "67b98b5288468829d58b0919",
-  original:
-    "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
-  shorten: "VVmjpY",
-  active: false,
-  calls: 0,
-  createdAt: "2025-03-07T06:59:53.248Z",
-  updatedAt: "2025-03-08T08:41:19.204Z",
-  __v: 0,
-  short_link: "http://localhost:3000/VVmjpY",
-};
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { updateFavouritesSchema } from "@/schemaValidations/favourites.schema";
+import { ListLinkhType } from "../../dashboard/component/checkboxes";
+import { useGetListFavourites, useRemoveFavouritesMutation } from "@/queries/useFavourites";
+import { toast } from "react-toastify";
 
 export default function page() {
+   const { data: linkListFavourites } = useGetListFavourites();
+   const removeFavouritesMutation = useRemoveFavouritesMutation()
+  const { control, watch } = useForm<any>({
+    resolver: zodResolver(updateFavouritesSchema),
+    defaultValues: {
+      favourites: {},
+    },
+  });
+
+  const selectedLinksArray = Object.entries(watch("favourites") || {})
+  .filter(([_, value]) => value)
+  .map(([key]) => key);
+
+   const handleClickRemove = async () => {
+     try {
+       await removeFavouritesMutation.mutateAsync({
+        favourites: selectedLinksArray,
+       });
+ 
+       toast.success("Xóa khỏi danh sách thành công");
+     } catch (error: any) {
+       toast.error(`Lỗi: ${error.toString()}`);
+     }
+   };
+
   return (
     <div className="favourites">
       <div className="title">Favourites URLs</div>
@@ -27,13 +45,21 @@ export default function page() {
               To do any of the following, first select short links using the
               checkboxes.
             </p>
-            <div className="btn-remove">remove from favourites</div>
-            <div className="btn-start-url">Start - URL Shortener</div>
+            <div className={ selectedLinksArray.length > 0 ? "active btn-remove" : "btn-remove"}
+              onClick={handleClickRemove}
+              >remove from favourites</div>
+            <div className=" active btn-start-url">Start - URL Shortener</div>
           </div>
         </div>
         <div className="right">
           <div className="box">
-            <CardCuttlyShortLink itemLink={item} />
+            {linkListFavourites?.data?.map((item: ListLinkhType, key: number) => {
+              return (
+                <div key={key}>
+                  <CardCuttlyShortLink itemLink={item} control={control} />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

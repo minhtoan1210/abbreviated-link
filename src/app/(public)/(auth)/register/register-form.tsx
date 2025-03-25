@@ -48,7 +48,7 @@ export default function RegisterForm() {
           <Controller
             name="email"
             control={control}
-            render={({ field }) => <Input {...field} />}
+            render={({ field }) => <Input {...field} placeholder="Nhập Email"/>}
           />
         </Form.Item>
 
@@ -61,7 +61,7 @@ export default function RegisterForm() {
           <Controller
             name="fullname"
             control={control}
-            render={({ field }) => <Input {...field} />}
+            render={({ field }) => <Input {...field} placeholder="Nhập fullname" />}
           />
         </Form.Item>
 
@@ -75,7 +75,7 @@ export default function RegisterForm() {
             name="password"
             control={control}
             render={({ field }) => (
-              <Input.Password {...field} placeholder="input password" />
+              <Input.Password {...field} placeholder="Nhập password" />
             )}
           />
         </Form.Item>
@@ -90,7 +90,7 @@ export default function RegisterForm() {
             name="confirm_password"
             control={control}
             render={({ field }) => (
-              <Input.Password {...field} placeholder="input password" />
+              <Input.Password {...field} placeholder="Nhập lại password" />
             )}
           />
         </Form.Item>

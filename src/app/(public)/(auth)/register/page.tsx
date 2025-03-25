@@ -5,7 +5,7 @@ import './style.css'
 export default function page() {
   return (
     <div className='register'>
-        <div className="title">register</div>
+        <div className="title">Register</div>
         <RegisterForm />
     </div>
   )

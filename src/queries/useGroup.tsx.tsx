@@ -8,6 +8,8 @@ export const useGetListGroup = (id: string) => {
       const res = await groupApiRequest.getListGroup(id);
       return res?.data || [];
     },
+    staleTime: 0,
+    refetchOnMount: true,
   });
 };
 
