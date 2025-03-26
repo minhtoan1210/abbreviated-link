@@ -1,22 +1,28 @@
+"use client";
 import React from "react";
 import CardCuttlyShortLink from "../../dashboard/component/card-cuttly-short-link";
 import "./style.css";
-
-const item: any = {
-  _id: "67ca9969d849a3cc62e14bc8",
-  user: "67b98b5288468829d58b0919",
-  original:
-    "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
-  shorten: "VVmjpY",
-  active: false,
-  calls: 0,
-  createdAt: "2025-03-07T06:59:53.248Z",
-  updatedAt: "2025-03-08T08:41:19.204Z",
-  __v: 0,
-  short_link: "http://localhost:3000/VVmjpY",
-};
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { updateHiddenUrlsSchema } from "@/schemaValidations/hiddenUrls.schema";
+import { useHiddenUrlsList } from "@/queries/useHiddenUrls";
+import { ListLinkhType } from "../../dashboard/component/checkboxes";
 
 export default function page() {
+  const { data: hiddenUrlsList } = useHiddenUrlsList();
+  const { control, watch } = useForm<any>({
+    resolver: zodResolver(updateHiddenUrlsSchema),
+    defaultValues: {
+      hiddenUrls: {},
+    },
+  });
+
+  const selectedLinksArray = Object.entries(watch("favourites") || {})
+    .filter(([_, value]) => value)
+    .map(([key]) => key);
+
+  console.log("hiddenUrlsList", hiddenUrlsList);
+
   return (
     <div className="hidden-urls">
       <div className="title">Hidden URLs</div>
@@ -27,13 +33,25 @@ export default function page() {
               To do any of the following, first select short links using the
               checkboxes.
             </p>
-            <div className="btn-remove">Unhide selected URLs</div>
+            <div
+              className={
+                selectedLinksArray.length > 0
+                  ? "active btn-remove"
+                  : "btn-remove"
+              }
+            >
+              Unhide selected URLs
+            </div>
             <div className="btn-start-url">Start - URL Shortener</div>
           </div>
         </div>
         <div className="right">
           <div className="box">
-            <CardCuttlyShortLink itemLink={item} />
+            {hiddenUrlsList?.map((item: ListLinkhType, key: number) => (
+              <div key={key}>
+                <CardCuttlyShortLink itemLink={item} control={control} />
+              </div>
+            ))}
           </div>
         </div>
       </div>

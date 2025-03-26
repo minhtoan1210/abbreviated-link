@@ -26,8 +26,6 @@ export default function ChangeUrlName() {
     } catch (error: any) { 
       toast.error(`Lỗi: ${error.toString()}`);
     }
-    
-
   };
 
   return (

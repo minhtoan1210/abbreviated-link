@@ -9,8 +9,9 @@ const linkApiRequest = {
   createLink: (body: { original: string }) =>
     http.post<LinkResType>("/link/", body),
   deleteLink: (id: string) => http.delete(`/link/${id}`),
-  updateLink: ({ body, id }: { id: number | string; body: { active?: boolean , shorten?: string } }) =>
+  updateLink: ({ body, id }: { id: number | string; body: { active?: boolean , shorten?: string, addtag?: string } }) =>
     http.patch(`/link/${id}`, body),
 };
 
 export default linkApiRequest; 
+

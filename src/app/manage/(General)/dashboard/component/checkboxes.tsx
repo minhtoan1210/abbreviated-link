@@ -25,7 +25,8 @@ export type ListLinkhType = {
   _id: string;
   active: boolean;
   favicon: string;
-  addtag: string
+  addtag: string;
+  hidden_urls:boolean;
 };
 
 export default function Checkboxes() {

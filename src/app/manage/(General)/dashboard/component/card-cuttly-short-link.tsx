@@ -106,15 +106,21 @@ export default function CardCuttlyShortLink({
     router.push(`/manage/change-url-name?id=${value._id}`);
   };
 
-  const handleInputAddTag = (value: any) => {
+  const handleInputAddTag = async (value: any) => {
     setValue(value);
+    await updateLinkMutation({
+      id: itemLink._id,
+      body: {
+        addtag: value,
+      },
+    });
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      console.log("hehe");
       handleInputAddTag(value);
+      setIsEditing(false)
       setValue("");
     }
   };
@@ -174,8 +180,6 @@ export default function CardCuttlyShortLink({
       click: (value: ListLinkhType) => handleRemove(value),
     },
   ];
-
-  console.log("asd", itemLink?.addtag === "");
 
   return (
     <div className="discover-url">
@@ -260,7 +264,7 @@ export default function CardCuttlyShortLink({
             />
           ) : (
             <span onClick={() => setIsEditing(true)}>
-              {itemLink?.addtag !== "" ? itemLink.addtag : "#add tag"}
+              {itemLink?.addtag !== "" ? '#' + itemLink.addtag : "#add tag"}
             </span>
           )}
           <div className="clicks">
