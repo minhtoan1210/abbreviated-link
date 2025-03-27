@@ -56,7 +56,7 @@ export default function page() {
             {linkListFavourites?.data?.map((item: ListLinkhType, key: number) => {
               return (
                 <div key={key}>
-                  <CardCuttlyShortLink itemLink={item} control={control} />
+                  <CardCuttlyShortLink itemLink={item} control={control} name={"favourites"}/>
                 </div>
               );
             })}

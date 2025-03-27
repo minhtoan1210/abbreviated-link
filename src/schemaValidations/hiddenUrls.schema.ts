@@ -1,7 +1,7 @@
 import z from "zod";
 
 export const updateHiddenUrlsSchema = z.object({
-    hiddenUrls: z.array(z.string()),
+    hidden_urls: z.array(z.string()),
 });
 
 

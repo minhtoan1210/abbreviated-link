@@ -1,5 +1,5 @@
 import hiddenUrlsApiRequest from "@/apiRequests/hidden_urls";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useHiddenUrlsList = () => {
   return useQuery({
@@ -10,3 +10,23 @@ export const useHiddenUrlsList = () => {
     },
   });
 };
+
+export const useUpdateHiddenUrlsMutation = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: hiddenUrlsApiRequest.addHiddenLink,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["links"] });
+    },
+  });
+};
+
+export const useRemoveHiddenUrlsMutation = () => {
+  const queryClient = useQueryClient();
+    return useMutation({
+      mutationFn: hiddenUrlsApiRequest.removeHiddenLink,
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ["hidden-urls-links"] });
+      },
+    });
+  };

@@ -12,5 +12,4 @@ const favouritesApiRequest = {
   removeFavourites: (body: updateFavouritesType) =>
     http.patch<any>(`${prefix}/remove-favourites`, body),
 };
-
 export default favouritesApiRequest;

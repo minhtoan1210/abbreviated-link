@@ -41,7 +41,8 @@ export default function Checkboxes() {
   const { control, watch, reset } = useForm<any>({
     resolver: zodResolver(updateFavouritesSchema),
     defaultValues: {
-      favourites: {},
+      itemSwitch: {},
+      type: "",
     },
   });
 
@@ -73,11 +74,11 @@ export default function Checkboxes() {
     setPagination({ page: page, limit: pageSize || pagination.limit });
   };
 
-  const selectedLinksArray = Object.entries(watch("favourites") || {})
+  const selectedLinksArray = Object.entries(watch("itemSwitch") || {})
     .filter(([_, value]) => value)
     .map(([key]) => key);
 
-  const onSubmitSwitch = async () => {
+  const onSubmitSwitchFavourites = async () => {
     try {
       await updateFavouritesMutation.mutateAsync({
         favourites: selectedLinksArray,
@@ -145,7 +146,7 @@ export default function Checkboxes() {
                   ? "active btn-favourites"
                   : "btn-favourites"
               }
-              onClick={onSubmitSwitch}
+              onClick={onSubmitSwitchFavourites}
             >
               add to favourites
             </div>
@@ -182,7 +183,7 @@ export default function Checkboxes() {
           {linkList?.data?.map((item: ListLinkhType, key: number) => {
             return (
               <div key={key}>
-                <CardCuttlyShortLink itemLink={item} control={control} />
+                <CardCuttlyShortLink itemLink={item} control={control} name={"itemSwitch"}/>
               </div>
             );
           })}

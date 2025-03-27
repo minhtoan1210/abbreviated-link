@@ -40,9 +40,11 @@ import { Controller } from "react-hook-form";
 export default function CardCuttlyShortLink({
   itemLink,
   control,
+  name
 }: {
   itemLink: ListLinkhType;
   control: any;
+  name: string
 }) {
   const { mutate } = useDeleteLinkMutation();
   const { mutate: updateLinkMutation, isPending } = useUpdateLinkMutation();
@@ -186,7 +188,7 @@ export default function CardCuttlyShortLink({
       <div className="discover-url-date">
         <Space direction="vertical">
           <Controller
-            name={`favourites.${itemLink._id}`}
+            name={`${name}.${itemLink._id}`}
             control={control}
             render={({ field: { value, onChange } }) => (
               <Switch

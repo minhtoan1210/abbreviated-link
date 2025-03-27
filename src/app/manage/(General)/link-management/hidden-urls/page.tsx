@@ -5,23 +5,37 @@ import "./style.css";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { updateHiddenUrlsSchema } from "@/schemaValidations/hiddenUrls.schema";
-import { useHiddenUrlsList } from "@/queries/useHiddenUrls";
+import { useHiddenUrlsList, useRemoveHiddenUrlsMutation } from "@/queries/useHiddenUrls";
 import { ListLinkhType } from "../../dashboard/component/checkboxes";
+import { toast } from "react-toastify";
 
 export default function page() {
   const { data: hiddenUrlsList } = useHiddenUrlsList();
+  const removeFavouritesMutation = useRemoveHiddenUrlsMutation()
   const { control, watch } = useForm<any>({
     resolver: zodResolver(updateHiddenUrlsSchema),
     defaultValues: {
-      hiddenUrls: {},
+      hidden_urls: {},
     },
   });
 
-  const selectedLinksArray = Object.entries(watch("favourites") || {})
+  const selectedLinksArray = Object.entries(watch("hidden_urls") || {})
     .filter(([_, value]) => value)
     .map(([key]) => key);
 
-  console.log("hiddenUrlsList", hiddenUrlsList);
+  console.log("selectedLinksArray", selectedLinksArray);
+
+     const handleClickRemove = async () => {
+       try {
+         await removeFavouritesMutation.mutateAsync({
+          hidden_urls: selectedLinksArray,
+         });
+   
+         toast.success("Xóa khỏi danh sách thành công");
+       } catch (error: any) {
+         toast.error(`Lỗi: ${error.toString()}`);
+       }
+     };
 
   return (
     <div className="hidden-urls">
@@ -39,6 +53,7 @@ export default function page() {
                   ? "active btn-remove"
                   : "btn-remove"
               }
+              onClick={handleClickRemove}
             >
               Unhide selected URLs
             </div>
@@ -49,7 +64,7 @@ export default function page() {
           <div className="box">
             {hiddenUrlsList?.map((item: ListLinkhType, key: number) => (
               <div key={key}>
-                <CardCuttlyShortLink itemLink={item} control={control} />
+                <CardCuttlyShortLink itemLink={item} control={control} name={"hidden_urls"}/>
               </div>
             ))}
           </div>
